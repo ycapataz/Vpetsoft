@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIO SESION</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/contactenos.css">
+    <link rel="stylesheet" href="../CSS/menu.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../Imegenes/logo1.png">
+</head>
+<body>
+        <!--Etiqueta nav proporciona enlaces de navegación,-->
+        <nav>
+            <!--se agrega un icono de font awesome para la casilla de verificacion con la clase checkbtn-->
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <!--se agrega una clase enlace-->
+            <a href="#" class="enlace">
+                <!--se agrega el logo para el menu mediante la clase logo-->
+                <img src="../Imegenes/logo.png" alt="" class="logo">
+                <p class="nombre"><b> VPETSOFT </b></p>
+            </a>
+            <!--lista de menu-->
+            <ul>
+                <!--se agrega los valores para la lista del menu y al valor del inicio se le agrega la clase active-->
+                <li><a class="active" href="../HTML/index.html">Inicio</a></li>
+                <li><a href="../HTML/nosotros.html">¿Quienes somos?</a></li>
+                <li><a href="../HTML/modulos.html">Servicios</a></li>
+                <li><a href="../HTML/error_404.html">Red de atencion</a></li>
+                <li><a href="../HTML/contactenos.html">Contactenos</a></li>
+            </ul>
+        </nav>
+        <br><br><br>
+    <div class="contenedor">
+        <form action="" class="form">
+            <div class="form-header">
+                <h1 class="form-title">INICIO SESION</h1>
+            </div>
+            <label for="nombre" class="form-label">Correo electronico</label>
+            <input type="email" id="correo_electronico" class="form-input" placeholder="Escriba su correo electronico" required>
+            <p id="correo_error" class="formulario_input-error">La dirección de correo electrónico que ingresaste no parece ser válida.</p>
+
+            
+            <label for="contraseña" class="form-label">Contraseña</label>
+            <input type="password" id="contraseña" class="form-input" placeholder="Escriba su contraseña" required>
+            <p id="contraseña_error" class="formulario_input-error">Contraseña inválida. Utiliza caracteres alfanuméricos y símbolos permitidos.</p>
+            <script src="../JAVASCRIPT/validacion_inicio.js"></script>
+
+            </select>
+            <br><br>
+            <input class="btn-submit" type="submit" value="Iniciar sesion">
+            <br><br><br>
+            <p><a href="../HTML/registrarse.html" class="form-label">¿No tiene cuenta? Registrese acá</a></p>
+            <p><a href="../HTML/olvcon.html" class="form-label">¿Olvido su contraseña?</a></p>
+        </form>
+    </div>  
+</body>
+</html>

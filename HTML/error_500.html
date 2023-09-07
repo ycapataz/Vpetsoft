@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--para que la pagina interprete el lenguaje universal-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../Imegenes/logo1.png">
+        <link rel="stylesheet" href="../CSS/menu.css">
+        <link rel="stylesheet" href="../CSS/style_error_404_y_500.css">
+    </head>
+    <body>
+        <nav>
+            <!--se agrega un icono de font awesome para la casilla de verificacion con la clase checkbtn-->
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <!--se agrega una clase enlace-->
+            <a href="../HTML/index.html" class="enlace">
+                <!--se agrega el logo para el menu mediante la clase logo-->
+                <img src="../Imegenes/logo.png" alt="" class="logo">
+                <p class="nombre"><b> VPETSOFT </b></p>
+            </a>
+            <!--lista de menu-->
+            <ul>
+                <!--se agrega los valores para la lista del menu y al valor del inicio se le agrega la clase active-->
+                <li><a class="active" href="../HTML/index.html">Inicio</a></li>
+                <li><a href="../HTML/nosotros.html">¿Quienes somos?</a></li>
+                <li><a href="../HTML/modulos.html">Servicios</a></li>
+                <li><a href="../HTML/error_404.html">Red de atencion</a></li>
+                <li><a href="../HTML/contactenos.html">Contactenos</a></li>
+            </ul>
+        </nav>
+            <section class="mensaje_error">
+                <section class="contenedor_mensaje-error">
+                    <h1 id="error_500">ERROR 500</h1>
+                        <img src="../Imegenes/gif_error_500.gif">
+                    <p id="error_500">Error interno del servidor</p>
+                </section>
+            </section>
+    </body>
+</html>

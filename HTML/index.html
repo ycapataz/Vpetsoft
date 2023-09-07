@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Etiqueta para ajustar el contenido al ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scalable=no, initial-scale=1.0, maximum-scale=1.0,maximum-scale=1.0">
+    <title>VPETSOFT</title>
+    <!--link de los estilos css-->
+    <link rel="stylesheet" href="../CSS/stylefooter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style_carrusel.css">
+    <link rel="stylesheet" href="../CSS/stylecards.css">
+    <link rel="stylesheet" href="../CSS/menu.css">
+    <link rel="stylesheet" href="../CSS/consejos.css">
+    <link rel="shortcut icon" href="../Imegenes/logo1.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--Etiqueta nav proporciona enlaces de navegación,-->
+    <nav>
+        <!--se agrega un icono de font awesome para la casilla de verificacion con la clase checkbtn-->
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <!--se agrega una clase enlace-->
+        <a href="#" class="enlace">
+            <!--se agrega el logo para el menu mediante la clase logo-->
+            <img src="../Imegenes/logo.png" alt="" class="logo">
+            <p class="nombre"><b> VPETSOFT </b></p>
+        </a>
+        <!--lista de menu-->
+        <ul>
+            <!--se agrega los valores para la lista del menu y al valor del inicio se le agrega la clase active-->
+            <li><a class="active" href="../HTML/index.html">Inicio</a></li>
+            <li><a href="../HTML/nosotros.html">¿Quienes somos?</a></li>
+            <li><a href="../HTML/modulos.html">Servicios</a></li>
+            <li><a href="../HTML/error_404.html">Red de atencion</a></li>
+            <li><a href="../HTML/contactenos.html">Contactenos</a></li>
+        </ul>
+        <br><br>
+        <!--se agrega la barra de busqueda con la clase src-->
+        <!---->
+        <div class="box">
+            <input type="text" name="search" placeholder="Buscar lo que deseas" class="src" autocomplete="off">
+        </div>
+        <!--se agrega el boton de iniciar sesion con la clase boton-->
+        <div class="boton">
+            <a href="../HTML/iniciosesion.html"><input class="btn" type="submit" value="Iniciar sesion"></a>
+        </div>
+        <!--se agrega el boton de registrarse con la clase boton1-->
+        <div class="boton1">
+            <!--a los dos botones se les asigna una misma clase porque tienen las mismas propiedades-->
+            <a href="../HTML/registrarse.html"><input class="btn" type="submit" value="Registrate"></a>
+        </div>
+    </nav>
+    <center>
+        <br><br><br><br>
+        <div class="carrusel">
+            <!--Este div es el contenedor principal del carrusel y tiene la clase "carrusel".-->
+                <div class="control_interno">
+                <!--Este div es el contenedor interno del carrusel y tiene la clase "control_interno".-->
+    
+                    <input class="deslizar" type="radio" id="deslizar-1" 
+                        name="deslizar" aria-hidden="true" hidden="" checked="checked">
+                    <!--Este input es un botón de radio que representa la primera imagen del carrusel. Tiene la clase "deslizar" y el id "deslizar-1". Está marcado como oculto y seleccionado por defecto.-->
+                        <div class="diapositiva">
+                            <img src="../Imegenes/carrusel_imagen_1.png">
+                        </div>
+                        <!--Este div contiene la primera imagen del carrusel. Tiene la clase "diapositiva" y contiene una etiqueta de imagen (img) con la ruta de la imagen.-->
+                        
+                    <input class="deslizar" type="radio" id="deslizar-2" 
+                        name="deslizar" aria-hidden="true" hidden="">
+                    <!--Este input es otro botón de radio que representa la segunda imagen del carrusel. Tiene la clase "deslizar" y el id "deslizar-2". Está oculto.-->
+                        <div class="diapositiva">
+                            <img src="../Imegenes/carrusel_imagen_2.png">
+                        </div>
+                    <!--Este div contiene la segunda imagen del carrusel. Tiene la clase "diapositiva" y contiene una etiqueta de imagen (img) con la ruta de la imagen.-->
+    
+                    <input class="deslizar" type="radio" id="deslizar-3" 
+                        name="deslizar" aria-hidden="true" hidden="">
+                    <!--Este input es otro botón de radio que representa la tercera imagen del carrusel. Tiene la clase "deslizar" y el id "deslizar-3". Está oculto.-->
+                        <div class="diapositiva">
+                            <img src="../Imegenes/carrusel_imagen_3.png">
+                        </div>
+                    <!--Este div contiene la tercera imagen del carrusel. Tiene la clase "diapositiva" y contiene una etiqueta de imagen (img) con la ruta de la idiapositiva-elemento-->
+                    <input class="deslizar" type="radio" id="deslizar-4" 
+                        name="deslizar" aria-hidden="true" hidden="">
+                    <!--Este input es otro botón de radio que representa la cuarta imagen del carrusel. Tiene la clase "deslizar" y el id "deslizar-4". Está oculto.-->
+                        <div class="diapositiva">
+                            <img src="../Imegenes/carrusel_imagen_4.png">
+                        </div>
+                    <!--Este div contiene la cuarta imagen del carrusel. Tiene la clase "diapositiva" y contiene una etiqueta de imagen (img) con la ruta de la imagen.-->
+                        
+                    <label for="deslizar-2" class="deslizar-control next control-1">≻</label>
+                    <label for="deslizar-3" class="deslizar-control next control-2">≻</label>
+                    <label for="deslizar-4" class="deslizar-control next control-3">≻</label>
+                    <label for="deslizar-1" class="deslizar-control next control-4">≻</label>
+                    <label for="deslizar-1" class="deslizar-control prev control-4">≺</label>
+                    <label for="deslizar-2" class="deslizar-control prev control-1">≺</label>
+                    <label for="deslizar-3" class="deslizar-control prev control-2">≺</label>
+                    <label for="deslizar-4" class="deslizar-control prev control-3">≺</label>
+                    
+                    <!--Estas etiquetas <label> son los controles del carrusel.
+                    Cada etiqueta está asociada a un botón de radio específico y tiene clases que controlan la dirección del desplazamiento de las imágenes.
+                    Los controles previos (con la flecha hacia la izquierda) tienen la clase "prev",
+                    mientras que los controles siguientes (con la flecha hacia la derecha) tienen la clase "next".
+                    Además, cada control tiene una clase "control-n" que se usa para asociarlo con el botón de radio correspondiente-->
+                    <ol class="deslizar-indicador">
+                        <li>
+                            <label for="deslizar-1" class="deslizar-circulo">•</label>
+                        </li>
+                        <li>
+                            <label for="deslizar-2" class="deslizar-circulo">•</label>
+                        </li>
+                        <li>
+                            <label for="deslizar-3" class="deslizar-circulo">•</label>
+                        </li>
+                        <li>
+                            <label for="deslizar-4" class="deslizar-circulo">•</label>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!--Este código representa los indicadores del carrusel.El elemento <ol> crea una lista ordenada para los indicadores.
+            Cada indicador se representa mediante un <li>(elemento de lista) y contiene una etiqueta <label>con la clase "deslizar-circulo".
+            El contenido de la etiqueta es un punto (•), que se utiliza como el símbolo del indicador.
+            Estos indicadores suelen usarse para mostrar visualmente la posición actual del carrusel
+            y permitir a los usuarios navegar directamente a una imagen específica haciendo clic en el indicador correspondiente.
+            En este caso, hay cuatro indicadores que se corresponden con las cuatro imágenes del carrusel (deslizador-1, deslizador-2, deslizador-3 y deslizador-4).-->
+    </center>
+    <br><br>
+    <div class="container-card"> 
+        <div class="card">
+            <figure>
+                <img src="../Imegenes/perros250.png">
+            </figure>
+            <div class="contenido-card">
+                <h3>Perros</h3>
+                <p>DOCUMENTAL: Perros y humanos - Los secretos de una amistad inquebrantable</p>
+                <a href="https://youtu.be/3yLoofhSdVc">Ver más</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="../Imegenes/gato250.png">
+            </figure>
+            <div class="contenido-card">
+                <h3>Gatos</h3>
+                <p>DOCUMENTAL: La Guia Maxima de LOS GATOS Discovery Channel</p>
+                <a href="https://youtu.be/YpXrH6t6th8">Ver más</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="../Imegenes/comida 250.png">
+            </figure>
+            <div class="contenido-card">
+                <h3>Cuida su dieta</h3>
+                <p>Somos lo que comemos, tambien aplica para nuestras mascotas.</p>
+                <a href="https://laika.com.co">Ver más</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="../Imegenes/dcotor250.png">
+            </figure>
+            <div class="contenido-card">
+                <h3>Su salud primero</h3>
+                <p>Vacunas, desparacitaciones, chequeos y procedimientos.</p>
+                <a href="https://www.agrocampo.com.co/plan-de-vacunacion">Ver Más</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="../Imegenes/fiesta250.png">
+            </figure>
+            <div class="contenido-card">
+                <h3>Eventos</h3>
+                <p>Calendario de eventos para que compartas con tu mascotas.</p>
+                <a href="../HTML/error_500.html">Ver Más</a>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="wrapper">
+        <img src="perrito.png" alt="">
+        <div class="text-box">
+            <h2>Consejos para tus perros</h2>
+            <p>
+                1. Proporciona una dieta equilibrada: Asegúrate de ofrecerle alimentos de calidad 
+                y adecuados para su edad, tamaño y raza. Consulta con tu veterinario para obtener 
+                recomendaciones específicas.
+                <br><br>
+                2. Entrenamiento de obediencia: Enseña a tu perro comandos básicos como "sentado", 
+                "quieto" y "ven". El entrenamiento de obediencia no solo ayuda en la convivencia, 
+                sino que también fortalece el vínculo entre tú y tu perro. Recuerda que el entrenamiento 
+                y la educación de un perro requieren tiempo y paciencia.
+                <br><br>
+                3. Cuidado veterinario regular: Lleva a tu perro al veterinario para chequeos regulares, 
+                vacunas y cuidado dental. Mantén al día su desparasitación y prevención de pulgas y garrapatas.
+            </p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <img src="gato.png" alt="">
+        <div class="text-box">
+            <h2>Consejos para tus gatos</h2>
+            <p>
+                1. Proporciona una alimentación adecuada: Asegúrate de ofrecerle alimentos de calidad específicos para 
+                gatos. Consulta con tu veterinario para obtener recomendaciones sobre la dieta más adecuada para tu gato 
+                en función de su edad, peso y salud. Ademas, mantén siempre disponible agua fresca y limpia para tu gato. 
+                Asegúrate de cambiar el agua regularmente para mantenerla en buen estado.
+                <br><br>
+                2. Caja de arena limpia: Si tu gato es de interior, asegúrate de tener una caja de arena limpia a su disposición. 
+                Limpia la caja de arena regularmente para evitar olores y proporcionar un ambiente higiénico.
+                <br><br>
+                3. Tiempo de juego y ejercicio: Dedica tiempo diario para jugar con tu gato. Utiliza juguetes interactivos, como cañas 
+                con plumas o pelotas, para estimular su instinto de caza y mantenerlo activo.
+            </p>
+        </div>
+    </div>-->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Siguenos</h4>
+                    <div class="social-link">
+                        <a href="https://www.facebook.com/profile.php?id=100092412408020&sk=about"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/petsoftpetsoft?igshid=NTc4MTIwNjQ2YQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/petsoft_1"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@proyectosena-se8xb/featured"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Compañía</h4>
+                    <ul>
+                        <li><a href="../HTML/nosotros.html">Nosotros</a></li>
+                        <li><a href="../HTML/modulos.html">Nuestros Sevicios</a></li>
+                        <li><a href="../HTML/error_404.html">Red de atención</a></li>
+                        <li><a href="../HTML/mapaSitio.html">Mapa de sitio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li>Telefono</li>
+                        <br>
+                        <li>3104598871</li>
+                        <li>018000911233</li>
+                        <br>
+                        <li>Horario de atención</li>
+                        <br>
+                        <li>Lunes a viernes</li>
+                        <li>8:00am - 7:00pm</li>
+                        <li>Sabados, domingos y festivos</li>
+                        <li>10:00am - 6:00pm</li>
+                        <br>
+                        <li>Correo</li>
+                        <br>
+                        <li>proyectosena318@gmail.com </li>
+                    </ul>
+                </div>
+                <div class="maps"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.445830815705!2d-74.1170330307784!3d4.613404528124113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99450e9c484f%3A0x9f22c108bb0bc4d4!2sDogsano!5e0!3m2!1ses!2sco!4v1683205339028!5m2!1ses!2sco" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

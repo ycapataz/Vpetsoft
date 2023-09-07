@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro clinico</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="../Imegenes/logo1.png">
+        <link rel="stylesheet" href="../CSS/ydcapa_encabezado.css">
+        <link rel="stylesheet" href="../CSS/ydcapa_campos_2.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    </head>
+<body>
+    <nav id="nav_registro_clinico">
+        <ul>
+            <li>
+                <a href="../HTML/index.html" class="logo">
+                    <img src="../Imegenes/logo.png" alt="">
+                    <span class="nav-item">Historia Clinica</span>
+                </a>
+            </li>
+            <li><a href="../HTML/ydcapa_perfil_veterinario.html">
+                <i class="fas fa-user"></i>
+                <span class="nav-item">Perfil</span>
+            </a></li>
+            <li><a href="../HTML/ydcapa_tabla_ingreso.html">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Ingresos</span>
+            </a></li>
+            <li><a href="../HTML/ydcapa_registro_clinico.html">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Registro clinico</span>
+            </a></li>
+            <li><a href="../HTML/ydcapa_historia_clicnico.html">
+                <i class="fas fa-wallet"></i>
+                <span class="nav-item">Historias Clinicas</span>
+            </a></li>
+            <li><a href="../HTML/ydcapa_Formula_medica.html">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Formula medica</span>
+            </a></li>
+            <li><a href="../HTML/ydcapa_examen_medico.html">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Examenes</span>
+            </a></li>
+            <!--
+            <li><a href="#">
+                <i class="fas fa-question-circle"></i>
+                <span class="nav-item">Ayuda</span> 
+            </a></li>
+            -->
+            <li><a href="../HTML/index.html" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Salir</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for "">
+                    <span class="las la-bars"></span>
+                </label>
+                Dogsano
+            </h2>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Buscar"/>
+            </div>
+
+            <div class="user-wrapper">
+                <img src="../Imegenes/veterinaria_3.jpg" width="40px"height="40px" alt="">
+                <div>
+                    <h4>PAOLA ANDREA MARLETO</h4>
+                    <small>VETERINARIO</small>
+                </div>
+            </div>
+        </header>
+    </div>
+    <br><br><br><br>
+	<main>
+        <h1>REGISTRO CLINICO</h1>
+        <br><br>
+		<form action="" class="formulario" id="formulario">
+			<!-- Grupo: Usuario -->
+			<div class="formulario__grupo" id="registro">
+				<label for="registro" class="formulario__label">Id registro clinico</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="registro" id="registro" placeholder="1">
+				</div>
+			</div>
+
+			<!-- Grupo: Nombre -->
+			<div class="formulario__grupo" id="Frecuencia">
+				<label for="Frecuencia" class="formulario__label">Frecuencia cardiaca</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="Frecuencia" id="Frecuencia" step="1" min="1" max="300" placeholder="100" required>
+				</div>
+			</div>
+
+			<!-- Grupo: Contraseña -->
+			<div class="formulario__grupo" id="Temperatura">
+				<label for="Temperatura" class="formulario__label">Temperatura</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="Temperatura" id="Temperatura" step="0.01" min=".1" placeholder="39,2" required>
+				</div>
+			</div>
+			<div class="formulario__grupo" id="Empleado">
+				<label for="Empleado" class="formulario__label">Empleado</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="Empleado" id="Empleado" placeholder="PAOLA ANDREA MARLETO" readonly value>
+				</div>
+			</div>
+
+			<!-- Grupo: Teléfono -->
+			<div class="formulario__grupo" id="Mascota">
+				<label for="Mascota" class="formulario__label">Mascota</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="Mascota" id="Mascota" placeholder="Zoe" readonly value>
+				</div>
+			</div>
+			<div class="formulario__grupo" id="medicamento">
+				<label for="Frecuencia" class="formulario__label">Enfermedad</label>
+			    <div class="formulario__grupo-input">
+					<select required>
+                        <option selected disabled>Seleccione</option>
+                        <option>Ninguno</option>
+                        <option>Parvovirosis</option>
+                        <option>Moquillo canino</option>
+                        <option>Leptospirosis</option>
+                        <option>Rabia</option>
+                        <option>Enfermedad de Lyme</option>
+                        <option>Tos de las perreras</option>
+                        <option>Dermatitis atópica</option>
+                        <option>Diabetes mellitus</option>
+                        <option>Enfermedad cardíaca congestiva</option>
+                        <option>Panleucopenia felina</option>
+                        <option>Virus de la inmunodeficiencia felina (FIV)</option>
+                        <option>Leucemia felina</option>
+                        <option>Rinotraqueítis felina</option>
+                        <option>Enfermedad renal crónica</option>
+                        <option>Asma felina</option>
+                        <option>Diabetes mellitus</option>
+                        <option>Hipertiroidismo felino</option>
+                        <option>Enfermedad del tracto urinario inferior felino (FLUTD)</option>
+                    </select>
+				</div>
+			</div>
+			<div class="formulario__grupo" id="Observacion">
+				<label for="Notas" class="formulario__label">Observacion</label>
+				<div class="formulario__grupo-input">
+					<textarea id="nota" name="nota" rows="12" cols="40" required></textarea>
+				</div>
+			</div>
+            <br><br>
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
+			</div>
+		</form>
+	</main>
+</body>
+</html>
