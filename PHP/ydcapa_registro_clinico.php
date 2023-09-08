@@ -83,7 +83,7 @@
     <main>
         <h1>REGISTRO CLINICO</h1>
         <br><br>
-        <form action="" class="formulario" id="formulario">
+        <form action="../PHP/ydcapa_insertar_registro.php" method="post" class="formulario" id="formulario">
             <!--  
             <div class="formulario__grupo" id="registro">
                 <label for="registro" class="formulario__label">Id registro clinico</label>
@@ -117,7 +117,31 @@
             <div class="formulario__grupo" id="Mascota">
                 <label for="Mascota" class="formulario__label">Mascota</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="Mascota" id="Mascota" placeholder="Zoe" readonly value>
+                <select name="enfermedad">
+            <?php
+            require("../conexion.php");
+
+
+            try {
+                $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+                $query = "SELECT * FROM mascota ORDER BY idmascota";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $idmascota = $row['idmascota'];
+                    $nomenfermedad = $row['nommascota'];
+                    echo "<option value=\"$idmascota\">$nomenfermedad</option>";
+                }
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        </select>
                 </div>
             </div>
             <div class="formulario__grupo" id="medicamento">
