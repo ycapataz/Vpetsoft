@@ -71,7 +71,7 @@
 
 
             <div class="user-wrapper">
-                <img src="../Model/Imegenes/veterinaria_3.jpg" width="40px"height="40px" alt="">
+                <img src="../Imegenes/veterinaria_3.jpg" width="40px"height="40px" alt="">
                 <div>
                     <h4>PAOLA ANDREA MARLETO</h4>
                     <small>VETERINARIO</small>
@@ -84,16 +84,14 @@
         <h1>REGISTRO CLINICO</h1>
         <br><br>
         <form action="" class="formulario" id="formulario">
-            <!-- Grupo: Usuario -->
+            <!--  
             <div class="formulario__grupo" id="registro">
                 <label for="registro" class="formulario__label">Id registro clinico</label>
                 <div class="formulario__grupo-input">
                     <input type="number" class="formulario__input" name="registro" id="registro" placeholder="1">
                 </div>
             </div>
-
-
-            <!-- Grupo: Nombre -->
+            -->
             <div class="formulario__grupo" id="Frecuencia">
                 <label for="Frecuencia" class="formulario__label">Frecuencia cardiaca</label>
                 <div class="formulario__grupo-input">
@@ -101,8 +99,6 @@
                 </div>
             </div>
 
-
-            <!-- Grupo: Contraseña -->
             <div class="formulario__grupo" id="Temperatura">
                 <label for="Temperatura" class="formulario__label">Temperatura</label>
                 <div class="formulario__grupo-input">
