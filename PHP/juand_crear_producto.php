@@ -50,7 +50,7 @@
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Entradas en inventario</span> 
             </a></li>
-            <li><a href="../juand_consultar_sald_inventario.php">
+            <li><a href="../PHP/juand_consultar_sald_inventario.php">
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Salidas en inventario</span> 
             </a></li>

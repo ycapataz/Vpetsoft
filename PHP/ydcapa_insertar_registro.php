@@ -1,43 +1,50 @@
 <?php
+require_once("../conexion.php");
+require_once("../PHP/ydcapa_registro_clinico.php");
+// Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require("../conexion.php");
-
-    try {
-        $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Error de conexión a la base de datos: " . $e->getMessage());
-    }
-
     // Recopila los datos del formulario
-    $frecuencia = $_POST["Frecuencia"];
-    $temperatura = $_POST["Temperatura"];
-    $empleado = $_POST["Empleado"];
-    $mascota = $_POST["Mascota"];
+    $Frecuencia = $_POST["Frecuencia"];
+    $Temperatura = $_POST["Temperatura"];
+    $Empleado = $_POST["Empleado"];
+    $Mascota = $_POST["Mascota"];
     $enfermedad = $_POST["enfermedad"];
-    $observacion = $_POST["nota"];
+    $nota = $_POST["nota"];
 
-    // Consulta de inserción
-    $query = "INSERT INTO registro_clinico (frecardiaca, temperatura, idingreso, idempleado, idexamenmedico) VALUES (:frecuencia, :temperatura, :idingreso, :idempleado, :idexamenmedico)";
 
-    // Preparar y ejecutar la consulta
+
+    // Realiza la inserción en la base de datos utilizando PDO
     try {
+        // Crear una conexión PDO
+        $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=tu_basededatos", "tu_usuario", "tu_contraseña");
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        // Consulta: Insertar un registro sin especificar idregistroclinico
+        $query = "INSERT INTO registroclinico (frecardiaca, temperatura, idingreso, idempleado, idexamenmedico) VALUES (:frecardiaca, :temperatura, :idingreso, :idempleado, :idexamenmedico)";
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':frecuencia', $frecuencia);
-        $stmt->bindParam(':temperatura', $temperatura);
-        $stmt->bindParam(':empleado', $empleado);
-        $stmt->bindParam(':mascota', $mascota);
-        $stmt->bindParam(':enfermedad', $enfermedad);
-        $stmt->bindParam(':observacion', $observacion);
+        $stmt->bindParam(":frecardiaca", $frecardiaca);
+        $stmt->bindParam(":temperatura", $temperatura);
+        $stmt->bindParam(":idingreso", $idingreso);
+        $stmt->bindParam(":idempleado", $idempleado);
+        $stmt->bindParam(":idexamenmedico", $idexamenmedico);
+        $frecardiaca = 122;
+        $temperatura = 392;
+        $idingreso = 1; // Debes proporcionar un valor para idingreso
+        $idempleado = 1; // Debes proporcionar un valor para idempleado
+        $idexamenmedico = 1; // Debes proporcionar un valor para idexamenmedico
         $stmt->execute();
-        echo "Registro exitoso";
-    } catch (PDOException $e) {
-        echo "Error al registrar: " . $e->getMessage();
-    }
+    
+        // Obtener el último idregistroclinico insertado
+        $ultimoIdRegistro = $pdo->lastInsertId();
+    
+        // Cerrar la conexión PDO
+        $pdo = null;
 
-    // Cerrar la conexión
-    $pdo = null;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 } else {
-    echo "Acceso no autorizado";
+    // El formulario no se ha enviado
+    echo "El formulario no se ha enviado correctamente.";
 }
 ?>

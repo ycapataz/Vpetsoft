@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar entradas en inventario</title>
-    <link rel="shortcut icon" href="../pagina_con_cud/Imegenes/logo1.png">
-    <link rel="stylesheet" href="../pagina_con_cud/CSS/juandencabezado.css">
-    <link rel="stylesheet" href="../pagina_con_cud/CSS/juand_tablas.css">
+    <link rel="shortcut icon" href="../Imegenes/logo1.png">
+    <link rel="stylesheet" href="../CSS/juandencabezado.css">
+    <link rel="stylesheet" href="../CSS/juand_tablas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
@@ -15,50 +15,50 @@
             <ul>
                 <li>
                     <a href="#" class="logo">
-                        <img src="../pagina_con_cud/Imegenes/logo.png" alt="">
+                        <img src="../Imegenes/logo.png" alt="">
                         <span class="nav-item">Inventario</span>
                     </a>
                 </li>
-                <li><a href="../pagina_con_cud/HTML/juand_perfil_inventario.html">
-                    <i class="fas fa-user"></i>
-                    <span class="nav-item">Perfil</span>
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_crear_producto.php">
-                    <i class="fas fa-chart-bar"></i>
-                    <span class="nav-item">Crear producto</span>
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juan_crear_proveedor.php">
-                    <i class="fas fa-chart-bar"></i>
-                    <span class="nav-item">Crear proveedor</span>
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_registro_entrada.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Registrar entrada</span>
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_registro_salida.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Registrar salida</span>
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_consultar_productos.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Consultar productos</span> 
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_consultar_proveedores.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Consultar proveedores</span> 
-                </a></li>
-                <li><a href="../pagina_con_cud/PHP/juand_consultar_ent_inventario.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Entradas en inventario</span> 
-                </a></li>
-                <li><a href="../pagina_con_cud/juand_consultar_sald_inventario.php">
-                    <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Salidas en inventario</span> 
-                </a></li>
-                <li><a href="../pagina_con_cud/HTML/index.html" class="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-item">Salir</span> 
-                </a></li>
+                <li><a href="../HTML/juand_perfil_inventario.html">
+                <i class="fas fa-user"></i>
+                <span class="nav-item">Perfil</span>
+            </a></li>
+            <li><a href="../PHP/juand_crear_producto.php">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Crear producto</span>
+            </a></li>
+            <li><a href="../PHP/juan_crear_proveedor.php">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Crear proveedor</span>
+            </a></li>
+            <li><a href="../PHP/juand_registro_entrada.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Registrar entrada</span>
+            </a></li>
+            <li><a href="../PHP/juand_registro_salida.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Registrar salida</span>
+            </a></li>
+            <li><a href="../PHP/juand_consultar_productos.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Consultar productos</span> 
+            </a></li>
+            <li><a href="../PHP/juand_consultar_proveedores.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Consultar proveedores</span> 
+            </a></li>
+            <li><a href="../PHP/juand_consultar_ent_inventario.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Entradas en inventario</span> 
+            </a></li>
+            <li><a href="../PHP/juand_consultar_sald_inventario.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Salidas en inventario</span> 
+            </a></li>
+            <li><a href="../HTML/index.html" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Salir</span> 
+            </a></li>
             </ul>
         </nav>
         <div class="main-content">
@@ -75,7 +75,7 @@
                 </div>
     
                 <div class="user-wrapper">
-                    <img src="../pagina_con_cud/Imegenes/almacenista.jpg" width="40px"height="40px" alt="">
+                    <img src="../Imegenes/almacenista.jpg" width="40px"height="40px" alt="">
                     <div>
                         <h4>CARLOS ANDRES HERRERA DIAZ</h4>
                         <small>ALMACENISTA</small>
@@ -88,7 +88,7 @@
             <h1>Salidas inventario</h1>
             <div class="input-group">
                 <input type="search" placeholder="Buscar producto">
-                <img src="../pagina_con_cud/Imegenes/search-icon.png" alt="">
+                <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
         <section class="table__body">
@@ -106,7 +106,7 @@
                 </thead>
                 <tbody>
                 <?php
-            require("conexion.php");
+            require("../conexion.php");
 
             try {
                 $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");

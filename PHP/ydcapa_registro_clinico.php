@@ -108,7 +108,31 @@
             <div class="formulario__grupo" id="Empleado">
                 <label for="Empleado" class="formulario__label">Empleado</label>
                 <div class="formulario__grupo-input">
-                    <input type="number" class="formulario__input" name="Empleado" id="Empleado" placeholder="PAOLA ANDREA MARLETO" readonly value>
+                <select name="empleado">
+                <?php
+                require("../conexion.php");
+
+
+                try {
+                    $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+                    $query = "SELECT * FROM empleado ORDER BY idempleado";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute();
+
+
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        $idempleado = $row['idempleado'];
+                        $nomempleado = $row['nomempleado'];
+                        echo "<option value=\"$idempleado\">$nomempleado</option>";
+                    }
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+                </select>
                 </div>
             </div>
 
@@ -117,7 +141,7 @@
             <div class="formulario__grupo" id="Mascota">
                 <label for="Mascota" class="formulario__label">Mascota</label>
                 <div class="formulario__grupo-input">
-                <select name="enfermedad">
+                <select name="Mascota">
             <?php
             require("../conexion.php");
 
@@ -134,8 +158,8 @@
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $idmascota = $row['idmascota'];
-                    $nomenfermedad = $row['nommascota'];
-                    echo "<option value=\"$idmascota\">$nomenfermedad</option>";
+                    $nommascota = $row['nommascota'];
+                    echo "<option value=\"$idmascota\">$nommascota</option>";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
