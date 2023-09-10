@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ingreso</title>
+        <title>Historia clinica</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="../Imegenes/logo1.png">
@@ -10,10 +10,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     </head>
 <body>
-    <nav id="nav_ingreso">
+    <nav id="nav_historias_clinicas">
         <ul>
             <li>
-                <a href="../pagina_con_cud/HTML/index.html" class="logo">
+                <a href="../HTML/index.html" class="logo">
                     <img src="../Imegenes/logo.png" alt="">
                     <span class="nav-item">Historia Clinica</span>
                 </a>
@@ -78,62 +78,64 @@
         </header>
         <br><br>
     </div>
-<main class="table">
-    <section class="table__header">
-        <h1>Ingresos</h1>
-        <div class="input-group">
-            <input type="search" placeholder="Buscar ingresos">
-            <img src="../Imegenes/search-icon.png" alt="">
-        </div>
-    </section>
-    <section class="table__body">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre propietario</th>
-                    <th>Nombre mascota</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                    <th>Fecha ingreso</th>
-                    <th>solucitud ingreso</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-            require("../conexion.php");
+    <main class="table">
+        <section class="table__header">
+            <h1>Historias clinicas</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Buscar Historia clinica">
+                <img src="../Imegenes/search-icon.png" alt="">
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Frecuencia C</th>
+                        <th>Temperatura</th>
+                        <th>Empleado</th>
+                        <th>Mascota</th>
+                        <th>Fecha</th>
+                        <th>Documento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    require("../conexion.php");
 
-            try {
-                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    try {
+                        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $query = "SELECT idingreso,nomcliente,nommascota,horaingreso,nomestadoingreso,fecingreso FROM cliente JOIN mascota ON cliente.idcliente=mascota.idcliente JOIN cita ON cita.idmascota=mascota.idmascota JOIN ingreso ON cita.idcita=ingreso.idcita JOIN estadoingreso ON ingreso.idestadoingreso=estadoingreso.idestadoingreso ORDER BY idingreso;";
-                $stmt = $conexion->prepare($query);
-                $stmt->execute();
+                        $query = "SELECT idingreso,nomcliente,nommascota,horaingreso,nomestadoingreso,fecingreso FROM cliente JOIN mascota ON cliente.idcliente=mascota.idcliente JOIN cita ON cita.idmascota=mascota.idmascota JOIN ingreso ON cita.idcita=ingreso.idcita JOIN estadoingreso ON ingreso.idestadoingreso=estadoingreso.idestadoingreso ORDER BY idingreso;";
+                        $stmt = $conexion->prepare($query);
+                        $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $idingreso = $row['idingreso'];
-                    $fecingreso = $row['nomcliente'];
-                    $horaingreso = $row['nommascota'];
-                    $idcita = $row['horaingreso'];
-                    $idestadoingreso = $row['nomestadoingreso'];
-                    $idtipoingreso = $row['fecingreso'];
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$idingreso</td>";
-                    echo "<td>$fecingreso</td>";
-                    echo "<td>$horaingreso</td>";
-                    echo "<td>$idcita</td>";
-                    echo "<td>$idestadoingreso</td>";
-                    echo "<td>$idtipoingreso</td>";
-                    echo "</tr>";
-                }
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-            ?>
-            </tbody>
-        </table>
-    </section>
-</main>
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $idingreso = $row['idingreso'];
+                            $fecingreso = $row['nomcliente'];
+                            $horaingreso = $row['nommascota'];
+                            $idcita = $row['horaingreso'];
+                            $idestadoingreso = $row['nomestadoingreso'];
+                            $idtipoingreso = $row['fecingreso'];
+                            // Imprimir los valores en la tabla
+                            echo "<tr>";
+                            echo "<td>$idingreso</td>";
+                            echo "<td>$fecingreso</td>";
+                            echo "<td>$horaingreso</td>";
+                            echo "<td>$idcita</td>";
+                            echo "<td>$idestadoingreso</td>";
+                            echo "<td>$idtipoingreso</td>";
+                            echo "<td><img class='icono' src='../Imegenes/accept.png'></td>";
+                            echo "</tr>";
+                            
+                        }
+                    } catch (PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                ?>
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>

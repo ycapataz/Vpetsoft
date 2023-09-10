@@ -18,34 +18,34 @@
                     <span class="nav-item">Historia Clinica</span>
                 </a>
             </li>
-            <li><a href="../HTML/ydcapa_perfil_veterinario.html">
+            <li><a href="../PHP/ydcapa_perfil_veterinario.html">
                 <i class="fas fa-user"></i>
                 <span class="nav-item">Perfil</span>
             </a></li>
-            <li><a href="../HTML/ydcapa_tabla_ingreso.html">
+            <li><a href="../PHP/ydcapa_tabla_ingreso.php">
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Ingresos</span>
             </a></li>
-            <li><a href="../HTML/ydcapa_registro_clinico.html">
+            <li><a href="../PHP/ydcapa_registro_clinico.php">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Registro clinico</span>
             </a></li>
-            <li><a href="../HTML/ydcapa_historia_clicnico.html">
+            <li><a href="../PHP/ydcapa_historia_clicnico.php">
                 <i class="fas fa-wallet"></i>
                 <span class="nav-item">Historias Clinicas</span>
             </a></li>
-            <li><a href="../HTML/ydcapa_Formula_medica.html">
+            <li><a href="../PHP/ydcapa_Formula_medica.php">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Formula medica</span>
             </a></li>
-            <li><a href="../HTML/ydcapa_examen_medico.html">
+            <li><a href="../PHP/ydcapa_examen_medico.php">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Examenes</span>
             </a></li>
             <!--
             <li><a href="#">
                 <i class="fas fa-question-circle"></i>
-                <span class="nav-item">Ayuda</span>
+                <span class="nav-item">Ayuda</span> 
             </a></li>
             -->
             <li><a href="../HTML/index.html" class="logout">
@@ -147,12 +147,12 @@
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
+                $conexion = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM mascota ORDER BY idmascota";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -177,12 +177,12 @@
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
+                $conexion = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM enfermedad ORDER BY idenfermedad";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 

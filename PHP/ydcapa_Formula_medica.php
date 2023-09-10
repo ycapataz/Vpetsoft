@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ingreso</title>
+        <title>Formula medica</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="../Imegenes/logo1.png">
         <link rel="stylesheet" href="../CSS/ydcapa_encabezado.css">
-        <link rel="stylesheet" href="../CSS/ydcapa_tablas.css">
+        <link rel="stylesheet" href="../CSS/ydcapa_campos_3.css">
+        <script src="../JAVASCRIPT/ydcapa_duplicar_campos.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     </head>
 <body>
-    <nav id="nav_ingreso">
+    <nav id="nav_formula_medica">
         <ul>
             <li>
-                <a href="../pagina_con_cud/HTML/index.html" class="logo">
+                <a href="../HTML/index.html" class="logo">
                     <img src="../Imegenes/logo.png" alt="">
                     <span class="nav-item">Historia Clinica</span>
                 </a>
@@ -78,62 +79,58 @@
         </header>
         <br><br>
     </div>
-<main class="table">
-    <section class="table__header">
-        <h1>Ingresos</h1>
-        <div class="input-group">
-            <input type="search" placeholder="Buscar ingresos">
-            <img src="../Imegenes/search-icon.png" alt="">
-        </div>
-    </section>
-    <section class="table__body">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre propietario</th>
-                    <th>Nombre mascota</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                    <th>Fecha ingreso</th>
-                    <th>solucitud ingreso</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-            require("../conexion.php");
+    <h1>FORMULA MEDICA</h1>
+    <br>
+	<main>
+		<form action="" class="formulario" id="formulario">
+			<div class="formulario__grupo" id="cantidad">
+				<label for="registro" class="formulario__label">cantidad</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="registro" id="registro" min="1" placeholder="1" required>
+			</div>
+			</div>
+			<div class="formulario__grupo" id="medicamento">
+				<label for="Frecuencia" class="formulario__label">medicamento</label>
+			    <div class="formulario__grupo-input">
+                    <select>
+                    <?php
+                    require("../conexion.php");
 
-            try {
-                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    try {
+                        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $query = "SELECT idingreso,nomcliente,nommascota,horaingreso,nomestadoingreso,fecingreso FROM cliente JOIN mascota ON cliente.idcliente=mascota.idcliente JOIN cita ON cita.idmascota=mascota.idmascota JOIN ingreso ON cita.idcita=ingreso.idcita JOIN estadoingreso ON ingreso.idestadoingreso=estadoingreso.idestadoingreso ORDER BY idingreso;";
-                $stmt = $conexion->prepare($query);
-                $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $idingreso = $row['idingreso'];
-                    $fecingreso = $row['nomcliente'];
-                    $horaingreso = $row['nommascota'];
-                    $idcita = $row['horaingreso'];
-                    $idestadoingreso = $row['nomestadoingreso'];
-                    $idtipoingreso = $row['fecingreso'];
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$idingreso</td>";
-                    echo "<td>$fecingreso</td>";
-                    echo "<td>$horaingreso</td>";
-                    echo "<td>$idcita</td>";
-                    echo "<td>$idestadoingreso</td>";
-                    echo "<td>$idtipoingreso</td>";
-                    echo "</tr>";
-                }
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-            ?>
-            </tbody>
-        </table>
-    </section>
-</main>
+                        $query = "SELECT idproducto, nomproducto FROM producto WHERE idcategoria = 2 ORDER BY idcategoria ASC;";
+                        $stmt = $conexion->prepare($query);
+                        $stmt->execute();
+
+
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $idproducto = $row['idproducto'];
+                            $nomproducto = $row['nomproducto'];
+                            echo "<option value=\"$idproducto\">$nomproducto</option>";
+                        }
+                    } catch (PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                    ?>
+                    </select>
+				</div>
+			</div>
+			<div class="formulario__grupo" id="grupo__Observaciones">
+				<label for="Notas" class="formulario__label" >Observaciones</label>
+				<div class="formulario__grupo-input">
+					<textarea id="nota" name="nota" rows="8" cols="35" required></textarea>
+				</div>
+                <button id="boton_duplicar" type="button" onclick="duplicarCampos()">+</button>
+			</div>
+            <div class="formulario__grupo" id="camposDuplicados">
+                <!-- Campos duplicados se agregarán aquí -->
+              </div>
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" id="btn" class="formulario__btn">Guardar</button>
+			</div>
+		</form>
+	</main>
 </body>
 </html>
