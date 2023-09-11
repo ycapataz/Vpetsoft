@@ -118,7 +118,7 @@
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $query = "SELECT * FROM proveedor ORDER BY idproveedor";
+                $query = "SELECT * FROM proveedor ORDER BY nomproveedor ";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 

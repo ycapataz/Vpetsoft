@@ -106,25 +106,25 @@
                     try {
                         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $query = "SELECT idingreso,nomcliente,nommascota,horaingreso,nomestadoingreso,fecingreso FROM cliente JOIN mascota ON cliente.idcliente=mascota.idcliente JOIN cita ON cita.idmascota=mascota.idmascota JOIN ingreso ON cita.idcita=ingreso.idcita JOIN estadoingreso ON ingreso.idestadoingreso=estadoingreso.idestadoingreso ORDER BY idingreso;";
+                        $query = "SELECT registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado, nommascota, fechregistroclinico FROM registroclinico JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico JOIN empleado ON empleado.idempleado = registroclinico.idempleado JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota ORDER BY registroclinico.idregistroclinico;";
                         $stmt = $conexion->prepare($query);
                         $stmt->execute();
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $idingreso = $row['idingreso'];
-                            $fecingreso = $row['nomcliente'];
-                            $horaingreso = $row['nommascota'];
-                            $idcita = $row['horaingreso'];
-                            $idestadoingreso = $row['nomestadoingreso'];
-                            $idtipoingreso = $row['fecingreso'];
+                            $idregistroclinico = $row['idregistroclinico'];
+                            $frecardiaca = $row['frecardiaca'];
+                            $temperatura = $row['temperatura'];
+                            $nomempleado = $row['nomempleado'];
+                            $nommascota = $row['nommascota'];
+                            $fechregistroclinico = $row['fechregistroclinico'];
                             // Imprimir los valores en la tabla
                             echo "<tr>";
-                            echo "<td>$idingreso</td>";
-                            echo "<td>$fecingreso</td>";
-                            echo "<td>$horaingreso</td>";
-                            echo "<td>$idcita</td>";
-                            echo "<td>$idestadoingreso</td>";
-                            echo "<td>$idtipoingreso</td>";
+                            echo "<td>$idregistroclinico</td>";
+                            echo "<td>$frecardiaca</td>";
+                            echo "<td>$temperatura</td>";
+                            echo "<td>$nomempleado</td>";
+                            echo "<td>$nommascota</td>";
+                            echo "<td>$fechregistroclinico</td>";
                             echo "<td><img class='icono' src='../Imegenes/accept.png'></td>";
                             echo "</tr>";
                             
