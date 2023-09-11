@@ -78,4 +78,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             window.history.back(); // Volver a la página anterior
           </script>';
 }
-?>No se encontró un ingreso asociado a la cita
+?>
