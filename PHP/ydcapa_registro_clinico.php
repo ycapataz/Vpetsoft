@@ -111,15 +111,12 @@
                 <select name="empleado">
                 <?php
                 require("../conexion.php");
-
-
                 try {
-                    $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
-                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                     $query = "SELECT * FROM empleado ORDER BY idempleado";
-                    $stmt = $pdo->prepare($query);
+                    $stmt = $conexion->prepare($query);
                     $stmt->execute();
 
 

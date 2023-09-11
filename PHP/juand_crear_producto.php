@@ -89,7 +89,7 @@
 			<div class="formulario__grupo" id="Frecuencia">
 				<label for="Frecuencia" class="formulario__label">Nombre producto</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Frecuencia" id="nombre_producto" placeholder="Ingrese el nombre del producto" required>
+					<input type="text" class="formulario__input" name="nombre_producto" id="nombre_producto" placeholder="Ingrese el nombre del producto" required>
 				</div>
 			</div>
 
@@ -97,30 +97,29 @@
 			<div class="formulario__grupo" id="Temperatura">
 				<label for="Temperatura" class="formulario__label">Fecha vencimiento</label>
 				<div class="formulario__grupo-input">
-					<input type="date" class="formulario__input" name="Temperatura" required>
+					<input type="date" class="formulario__input" name="fecha_ven" id="fecha_ven" required>
 				</div>
 			</div>
 			<div class="formulario__grupo" id="Auscultacion">
 				<label for="Auscultacion" class="formulario__label">Cantidad</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="Auscultacion" id="Auscultacion" placeholder="1" required pattern="[0-9]">
+					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" required pattern="[0-9]">
 				</div>
 			</div>
             <div class="formulario__grupo">
                 <label>Proveedor</label>
-                <select>
+                <select name="proveedor">
                 <option selected disabled>Seleccione un proveedor</option>
             <?php
             require("../conexion.php");
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM proveedor ORDER BY idproveedor";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -137,19 +136,18 @@
             </div>
             <div class="formulario__grupo">
                 <label>Categoria</label>
-                <select name="enfermedad">
+                <select name="categoria">
                 <option selected disabled>Seleccione una categoria</option>
             <?php
             require("../conexion.php");
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM categoria ORDER BY idcategoria";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -166,19 +164,18 @@
             </div>
             <div class="formulario__grupo">
                 <label>Estado producto</label>
-                <select>
+                <select name="estado">
                 <option selected disabled>Seleccione un estado</option>
             <?php
             require("../conexion.php");
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM estado ORDER BY idestado";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -196,7 +193,7 @@
             <div class="formulario__grupo" id="examen">
 				<label for="examen" class="formulario__label">Lote producto</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="examen" id="examen" placeholder="Ingrese el lote del producto" required>
+					<input type="text" class="formulario__input" name="lote" id="lote" placeholder="Ingrese el lote del producto" required>
 				</div>
 			</div>
             

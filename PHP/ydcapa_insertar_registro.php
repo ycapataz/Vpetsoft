@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         document.getElementById("Mascota").value = "";
                         document.getElementById("enfermedad").value = "";
                         document.getElementById("nota").value = "";
-
                         alert("Registro clínico creado exitosamente");
                         window.location.href = "http://localhost/pagina_con_crud/PHP/ydcapa_registro_clinico.php";
                       </script>';
