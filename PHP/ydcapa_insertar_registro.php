@@ -1,50 +1,73 @@
 <?php
 require_once("../conexion.php");
-require_once("../PHP/ydcapa_registro_clinico.php");
-// Verifica si se ha enviado el formulario
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recopila los datos del formulario
-    $Frecuencia = $_POST["Frecuencia"];
-    $Temperatura = $_POST["Temperatura"];
-    $Empleado = $_POST["Empleado"];
-    $Mascota = $_POST["Mascota"];
-    $enfermedad = $_POST["enfermedad"];
-    $nota = $_POST["nota"];
+    $frecuencia = $_POST['Frecuencia'];
+    $temperatura = $_POST['Temperatura'];
+    $empleado = $_POST['empleado'];
+    $mascota = $_POST['Mascota'];
+    $enfermedad = $_POST['enfermedad'];
+    $observacion = $_POST['nota'];
 
-
-
-    // Realiza la inserción en la base de datos utilizando PDO
     try {
-        // Crear una conexión PDO
-        $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=tu_basededatos", "tu_usuario", "tu_contraseña");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-        // Consulta: Insertar un registro sin especificar idregistroclinico
-        $query = "INSERT INTO registroclinico (frecardiaca, temperatura, idingreso, idempleado, idexamenmedico) VALUES (:frecardiaca, :temperatura, :idingreso, :idempleado, :idexamenmedico)";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(":frecardiaca", $frecardiaca);
-        $stmt->bindParam(":temperatura", $temperatura);
-        $stmt->bindParam(":idingreso", $idingreso);
-        $stmt->bindParam(":idempleado", $idempleado);
-        $stmt->bindParam(":idexamenmedico", $idexamenmedico);
-        $frecardiaca = 122;
-        $temperatura = 392;
-        $idingreso = 1; // Debes proporcionar un valor para idingreso
-        $idempleado = 1; // Debes proporcionar un valor para idempleado
-        $idexamenmedico = 1; // Debes proporcionar un valor para idexamenmedico
-        $stmt->execute();
-    
-        // Obtener el último idregistroclinico insertado
-        $ultimoIdRegistro = $pdo->lastInsertId();
-    
-        // Cerrar la conexión PDO
-        $pdo = null;
+        // Verificar si hay una cita para la mascota y el empleado
+        $query_cita = "SELECT idcita FROM cita WHERE idmascota = '$mascota' AND idempleado = '$empleado'";
+        $stmt_cita = $conexion->prepare($query_cita);
+        $stmt_cita->execute();
+        $row_cita = $stmt_cita->fetch(PDO::FETCH_ASSOC);
+
+        if ($row_cita) {
+            $idcita = $row_cita['idcita'];
+
+            // Obtener el idingreso correspondiente
+            $query_ingreso = "SELECT idingreso FROM ingreso WHERE idcita = '$idcita'";
+            $stmt_ingreso = $conexion->prepare($query_ingreso);
+            $stmt_ingreso->execute();
+            $row_ingreso = $stmt_ingreso->fetch(PDO::FETCH_ASSOC);
+
+            if ($row_ingreso) {
+                $idingreso == $row_ingreso['idingreso'];
+
+                // Insertar en registroclinico con idingreso obtenido
+                $query_registroclinico = "INSERT INTO registroclinico (frecardiaca, temperatura, idingreso, idempleado, idexamenmedico) 
+                                          VALUES ('$frecuencia', '$temperatura', '$idingreso', '$empleado', 1)";
+                $stmt_registroclinico = $conexion->prepare($query_registroclinico);
+                $stmt_registroclinico->execute();
+
+                // Limpiar campos del formulario
+                echo '<script>
+                        document.getElementById("Frecuencia").value = "";
+                        document.getElementById("Temperatura").value = "";
+                        document.getElementById("empleado").value = "";
+                        document.getElementById("Mascota").value = "";
+                        document.getElementById("enfermedad").value = "";
+                        document.getElementById("nota").value = "";
+
+                        alert("Registro clínico creado exitosamente");
+                        window.location.href = "http://localhost/pagina_con_crud/PHP/ydcapa_registro_clinico.php";
+                      </script>';
+
+            } else {
+                echo '<script>
+                        alert("No se encontró un ingreso asociado a la cita");
+                        window.history.back(); // Volver a la página anterior
+                      </script>';
+            }
+        } else {
+            echo '<script>
+                    alert("No se encontró una cita para la mascota y el empleado");
+                    window.history.back(); // Volver a la página anterior
+                  </script>';
+        }
 
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 } else {
     // El formulario no se ha enviado
-    echo "El formulario no se ha enviado correctamente.";
+    echo '<script>
+            alert("El formulario no se ha enviado correctamente.");
+            window.history.back(); // Volver a la página anterior
+          </script>';
 }
-?>
+?>No se encontró un ingreso asociado a la cita

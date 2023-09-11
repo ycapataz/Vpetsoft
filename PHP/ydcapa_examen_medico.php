@@ -99,8 +99,6 @@
 
                     try {
                         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
                         $query = "SELECT * FROM examenmedico ORDER BY idexamenmedico";
                         $stmt = $conexion->prepare($query);
                         $stmt->execute();
