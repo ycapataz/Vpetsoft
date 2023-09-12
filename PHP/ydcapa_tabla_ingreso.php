@@ -126,7 +126,6 @@
                     echo "<td>$idestadoingreso</td>";
                     echo "<td>$idtipoingreso</td>";
                     echo "<td><img class='icono' src='../Imegenes/check.png'></td>";
-                    echo "<td><img class='icono' src='../Imegenes/cross.png'></td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {
