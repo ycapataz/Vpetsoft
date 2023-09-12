@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../CSS/ydcapa_encabezado.css">
         <link rel="stylesheet" href="../CSS/ydcapa_tablas.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
     </head>
 <body>
     <nav id="nav_historias_clinicas">
@@ -82,12 +83,12 @@
         <section class="table__header">
             <h1>Historias clinicas</h1>
             <div class="input-group">
-                <input type="search" placeholder="Buscar Historia clinica">
+                <input type="search" id="busqueda" placeholder="Buscar Historia clinica">
                 <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
         <section class="table__body">
-            <table>
+            <table id="miTabla">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -137,5 +138,19 @@
             </table>
         </section>
     </main>
+    <!--filtro de de busqueda de la tabla-->
+    <script>
+        document.getElementById('busqueda').addEventListener('input', function() {
+            let filtro = this.value.toLowerCase();
+            let filas = document.querySelectorAll('#miTabla tbody tr');
+
+            console.log(filas);
+
+            filas.forEach(function(fila) {
+                let textoFila = fila.textContent.toLowerCase();
+                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>

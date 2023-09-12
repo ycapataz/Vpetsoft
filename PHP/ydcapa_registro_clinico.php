@@ -109,6 +109,7 @@
                 <label for="Empleado" class="formulario__label">Empleado</label>
                 <div class="formulario__grupo-input">
                 <select name="empleado">
+                <option selected disabled>Seleccione un empleado</option>
                 <?php
                 require("../conexion.php");
                 try {
@@ -139,6 +140,7 @@
                 <label for="Mascota" class="formulario__label">Mascota</label>
                 <div class="formulario__grupo-input">
                 <select name="Mascota">
+                <option selected disabled>Seleccione una Mascota</option>
             <?php
             require("../conexion.php");
 

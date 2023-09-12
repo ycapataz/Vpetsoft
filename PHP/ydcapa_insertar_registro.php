@@ -37,22 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Obtener el último idregistroclinico insertado
                 $idregistroclinico = $conexion->lastInsertId();
 
-                    // Paso 2: Insertar en mascota_has_registroclinico
+                    // Insertar en mascota_has_registroclinico
                 $query_mascota_registroclinico = "INSERT INTO mascota_has_registroclinico (idmascota, idregistroclinico, observaciones, fechregistroclinico, idenfermedad) 
                                                     VALUES ('$mascota', '$idregistroclinico', '$observacion', NOW(), '$enfermedad')";
                 $stmt_mascota_registroclinico = $conexion->prepare($query_mascota_registroclinico);
                 $stmt_mascota_registroclinico->execute();
 
-                // Limpiar campos del formulario
                 echo '<script>
-                        alert("Registro clínico creado exitosamente");
-                        window.location.href = "http://localhost/pagina_con_crud/PHP/ydcapa_registro_clinico.php";
-                        document.getElementById("Frecuencia").value = "";
-                        document.getElementById("Temperatura").value = "";
-                        document.getElementById("empleado").value = "";
-                        document.getElementById("Mascota").value = "";
-                        document.getElementById("enfermedad").value = "";
-                        document.getElementById("nota").value = "";
+                            alert("Registro clínico creado exitosamente.");
+                            window.location.href = "../PHP/ydcapa_registro_clinico.php";
+                        
                       </script>';
 
             } else {
@@ -78,4 +72,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             window.history.back(); // Volver a la página anterior
           </script>';
 }
-?>No se encontró un ingreso asociado a la cita
+?>

@@ -82,12 +82,12 @@
     <section class="table__header">
         <h1>Ingresos</h1>
         <div class="input-group">
-            <input type="search" placeholder="Buscar ingresos">
+            <input id="busqueda" type="search" placeholder="Buscar ingresos">
             <img src="../Imegenes/search-icon.png" alt="">
         </div>
     </section>
     <section class="table__body">
-        <table>
+        <table id="miTabla">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -125,6 +125,8 @@
                     echo "<td>$idcita</td>";
                     echo "<td>$idestadoingreso</td>";
                     echo "<td>$idtipoingreso</td>";
+                    echo "<td><img class='icono' src='../Imegenes/check.png'></td>";
+                    echo "<td><img class='icono' src='../Imegenes/cross.png'></td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {
@@ -135,5 +137,19 @@
         </table>
     </section>
 </main>
+    <!--filtro de de busqueda de la tabla-->
+    <script>
+        document.getElementById('busqueda').addEventListener('input', function() {
+            let filtro = this.value.toLowerCase();
+            let filas = document.querySelectorAll('#miTabla tbody tr');
+
+            console.log(filas);
+
+            filas.forEach(function(fila) {
+                let textoFila = fila.textContent.toLowerCase();
+                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
