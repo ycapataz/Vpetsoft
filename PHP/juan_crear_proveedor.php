@@ -85,12 +85,12 @@
 	<main>
         <h1>CREAR NUEVO PROVEEDOR</h1>
         <br><br><br><br>
-		<form action="" class="formulario" id="formulario">
+		<form action="guardarProveedor.php" class="formulario" method="POST">
 			<!-- Grupo: Nombre -->
 			<div class="formulario__grupo" id="Frecuencia">
 				<label for="Frecuencia" class="formulario__label">Nombre proveedor</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Frecuencia" id="Frecuencia" placeholder="Ingrese el nombre del proveedor" required>
+					<input type="text" class="formulario__input" name="nombre_proveedor" id="nombre_proveedor" placeholder="Ingrese el nombre del proveedor" required>
 				</div>
 			</div>
 
@@ -98,36 +98,35 @@
 			<div class="formulario__grupo" id="Temperatura">
 				<label for="Temperatura" class="formulario__label">Representante</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Temperatura" required placeholder="Ingrese el nombre del representante">
+					<input type="text" class="formulario__input" name="representante" id="representante" placeholder="Ingrese el nombre del representante" required>
 				</div>
 			</div>
 			<div class="formulario__grupo" id="Auscultacion">
 				<label for="Auscultacion" class="formulario__label">Correo</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="Auscultacion" id="Auscultacion" placeholder="Ej davidperez01@gmail.com" required>
+					<input type="email" class="formulario__input" name="correo" id="correo" placeholder="Ej davidperez01@gmail.com" required>
 				</div>
 			</div>
 			<div class="formulario__grupo" id="Empleado">
 				<label for="Empleado" class="formulario__label">Telefono</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="Empleado" id="Empleado" placeholder="Ingrese el telefono del proveedor" required >
+					<input type="number" class="formulario__input" name="telefono" id="telefono" placeholder="Ingrese el telefono del proveedor" required >
 				</div>
 			</div>
             <div class="formulario__grupo">
                 <label>Ciudad</label>
-                <select>
+                <select name="ciudad">
                 <option selected disabled>Seleccione una ciudad</option>
             <?php
             require("../conexion.php");
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1:3308;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM ciudades ORDER BY idciudad";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -146,19 +145,18 @@
             </div>	
             <div class="formulario__grupo">
                 <label>Estado producto</label>
-                <select>
+                <select name="estado">
                 <option selected disabled>Seleccione un estado</option>
             <?php
             require("../conexion.php");
 
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
                 $query = "SELECT * FROM estado ORDER BY idestado";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
 
@@ -176,7 +174,7 @@
             <div class="formulario__grupo" id="examen">
 				<label for="examen" class="formulario__label">NIT</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="examen" id="examen" placeholder="Ingrese el NIT del proveedor" required>
+					<input type="text" class="formulario__input" name="nit" id="nit" placeholder="Ingrese el NIT del proveedor" required>
 				</div>
 			</div>
             <br>
