@@ -110,11 +110,10 @@
             require("../conexion.php");
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $query = "SELECT idproveedor,nomproveedor, repreproveedor,corproveedor, telproveedor, nomciudad, nomestado, nit FROM proveedor JOIN ciudades ON proveedor.idciudad=ciudades.idciudad JOIN estado ON proveedor.idestado=estado.idestado ORDER BY idproveedor;";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
