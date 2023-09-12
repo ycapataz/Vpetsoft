@@ -1,6 +1,6 @@
 <?php
 // Datos de conexión a la base de datos
-$host = "127.0.0.1:3308"; // Cambia esto si tu base de datos no está en localhost
+$host = "127.0.0.1"; // Cambia esto si tu base de datos no está en localhost
 $dbname = "vpetsoft";
 $usuario = "root";
 $contrasena = "";

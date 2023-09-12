@@ -109,11 +109,10 @@
             require("../conexion.php");
 
             try {
-                $pdo = new PDO("mysql:host=127.0.0.1;dbname=vpetsoft", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $query = "SELECT registroentrada.idregistroentrada, nomproducto, fechaentrada, cantentrada, fechavenproducto, nomcategoria, nomproveedor FROM registroentrada JOIN producto_has_registroentrada ON registroentrada.idregistroentrada = producto_has_registroentrada.idregistroentrada JOIN producto ON producto_has_registroentrada.idproducto = producto.idproducto JOIN categoria ON producto.idcategoria = categoria.idcategoria JOIN proveedor ON producto.idproveedor =proveedor.idproveedor ORDER BY registroentrada.idregistroentrada;";
-                $stmt = $pdo->prepare($query);
+                $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
