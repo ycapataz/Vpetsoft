@@ -6,13 +6,12 @@ $usuario = "root";
 $contrasena = "";
 
 try {
-    // Crear una conexión PDO
+    // Se crea una conexión PDO
     $conexion = new PDO("mysql:host={$host};dbname={$dbname}", $usuario, $contrasena);
 
-    // Establecer el modo de error de PDO a excepciones
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Ahora puedes utilizar $conexion para ejecutar consultas SQL
+
     //echo "La conexión a la base de datos se ha establecido correctamente.";
 } catch (PDOException $e) {
     echo "Error de conexión: " . $e->getMessage();
