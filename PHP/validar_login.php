@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redireccionar según el rol
         switch($idcargo) {
             case 1:
-                header("Location: ../PHP/ydcapa_perfil_veterinario.html");
+                header("Location: ../PHP/ydcapa_perfil_veterinario.php");
                 break;
             case 2:
                 header("Location: ../HTML/avg_tabla_ingresos.html");
@@ -50,12 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Credenciales incorrectas.";
     }
-    echo "<script>alert('".$_SESSION['nomcargo']."');</script>";
+    //echo "<script>alert('".$_SESSION['nomcargo']."');</script>";
 }
-//cerrar sesion
-if(isset($_GET['accion']) && $_GET['accion'] == 'salir') {
-    session_destroy();
-    header("Location: ../HTML/iniciosesion.html");
-    exit();
-}
+
 ?>

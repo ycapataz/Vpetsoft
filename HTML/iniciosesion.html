@@ -37,17 +37,17 @@
         </nav>
         <br><br><br>
     <div class="contenedor">
-        <form action="" method="post" class="form" id="form">
+        <form action="../PHP/validar_login.php" method="post" class="form" id="form">
             <div class="form-header">
                 <h1 class="form-title">INICIO SESION</h1>
             </div>
             <label for="nombre" class="form-label">Correo electronico</label>
-            <input type="email" id="correo_electronico" class="form-input" placeholder="Escriba su correo electronico" required>
+            <input name="email" type="email" id="correo_electronico" class="form-input" placeholder="Escriba su correo electronico" required>
             <p id="correo_error" class="formulario_input-error">La dirección de correo electrónico que ingresaste no parece ser válida.</p>
 
             
             <label for="contraseña" class="form-label">Contraseña</label>
-            <input type="password" id="contraseña" class="form-input" placeholder="Escriba su contraseña" required>
+            <input name="password" type="password" id="contraseña" class="form-input" placeholder="Escriba su contraseña" required>
             <p id="contraseña_error" class="formulario_input-error">Contraseña inválida. Utiliza caracteres alfanuméricos y símbolos permitidos.</p>
             <script src="../JAVASCRIPT/validacion_inicio.js"></script>
 

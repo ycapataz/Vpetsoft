@@ -1,3 +1,21 @@
+<?php
+// Inicia la sesión
+session_start();
+
+// Incluye el archivo de conexión a la base de datos
+include '../conexion.php';
+
+// Obtiene el nombre de usuario almacenado en la variable de sesión
+$nombre = $_SESSION['nombre'];
+
+// Verifica si la variable de sesión 'nombre' está seteada (es decir, si existe)
+if (!isset($nombre)){
+    // Si no existe, redirige a la página de inicio de sesión
+    header("location: ../HTML/iniciosesion.html");
+}
+/* Si la variable de sesión 'nombre' está llena, el usuario tiene acceso a esta página
+de lo contrario no podra ingresar y lo mandara al forulario a iniciar sesion*/
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +38,7 @@
                     <span class="nav-item">Historia Clinica</span>
                 </a>
             </li>
-            <li><a href="../PHP/ydcapa_perfil_veterinario.html">
+            <li><a href="../PHP/ydcapa_perfil_veterinario.php">
                 <i class="fas fa-user"></i>
                 <span class="nav-item">Perfil</span>
             </a></li>
@@ -50,7 +68,7 @@
                 <span class="nav-item">Ayuda</span> 
             </a></li>
             -->
-            <li><a href="../HTML/index.html" class="logout">
+            <li><a href="../PHP/cerrar_sesion.php" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item">Salir</span>
             </a></li>
@@ -73,7 +91,7 @@
             <div class="user-wrapper">
                 <img src="../Imegenes/veterinaria_3.jpg" width="40px"height="40px" alt="">
                 <div>
-                    <h4>PAOLA ANDREA MARLETO</h4>
+                    <h4><?php echo $nombre; ?></h4>
                     <small>VETERINARIO</small>
                 </div>
             </div>
