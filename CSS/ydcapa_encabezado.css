@@ -8,6 +8,10 @@
 	box-sizing: border-box;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+h4{
+	text-transform: uppercase;
+}
 nav{
 	background: #C3F294;;/*fondo bar nav*/
 	width: 90px;/*tamano letras*/
