@@ -142,9 +142,5 @@
             </table>
         </section>
     </main>
-    <br><br><br><br>
-    <div class="formulario__grupo formulario__grupo-btn-enviar">
-        <button type="submit" class="formulario__btn">Cambiar estado producto</button>
-    </div>
 </body>
 </html>

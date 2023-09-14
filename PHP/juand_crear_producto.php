@@ -146,7 +146,7 @@
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $query = "SELECT * FROM categoria ORDER BY idcategoria";
+                $query = "SELECT * FROM categoria ORDER BY nomcategoria";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
@@ -174,7 +174,7 @@
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $query = "SELECT * FROM estado ORDER BY idestado";
+                $query = "SELECT * FROM estado ORDER BY nomestado";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
