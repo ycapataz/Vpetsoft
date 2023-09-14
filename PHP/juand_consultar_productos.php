@@ -103,6 +103,7 @@
                         <th>Lote</th>
                         <th>Categoria</th>
                         <th>Proveedor</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,6 +136,10 @@
                     echo "<td>$loteproducto</td>";
                     echo "<td>$nomcategoria</td>";
                     echo "<td>$nomproveedor</td>";
+                    echo "<td style='text-align: center;'>
+                    <button style='width: 59%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href='../PHP/editarProducto.php?id=$idproducto'><i class='fas fa-edit' style='color: white;'></i></a></button>
+                    <button style='width: 59%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                </td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {

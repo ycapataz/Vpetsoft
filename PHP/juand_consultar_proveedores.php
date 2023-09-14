@@ -103,6 +103,7 @@
                         <th>Ciudad</th>
                         <th>Estado</th>
                         <th>NIT</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,6 +136,10 @@
                     echo "<td>$nomciudad</td>";
                     echo "<td>$nomestado</td>";
                     echo "<td>$nit</td>";
+                    echo "<td style='text-align: center;'>
+                    <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-edit' style='color: white;'></i></a></button>
+                    <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                </td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {
