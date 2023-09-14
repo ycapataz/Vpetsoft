@@ -98,7 +98,7 @@
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $query = "SELECT idproducto, nomproducto FROM producto ORDER BY idproducto";
+                $query = "SELECT idproducto, nomproducto FROM producto ORDER BY nomproducto";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
