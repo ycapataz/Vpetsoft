@@ -48,7 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Rol desconocido";
         }
     } else {
-        echo "Credenciales incorrectas.";
+        echo '<script>
+        alert("Credenciales incorrectas.");
+        window.location.href = "../HTML/iniciosesion.html";
+        </script>';
     }
     //echo "<script>alert('".$_SESSION['nomcargo']."');</script>";
 }
