@@ -2,7 +2,7 @@
 session_start();
 include '../conexion.php';
 
-$nombre = $_SESSION['nombre'] ;
+$nombre = $_SESSION['nombre'];
 if (!isset($nombre)){
     header("location: ../HTML/iniciosesion.html");
 }
