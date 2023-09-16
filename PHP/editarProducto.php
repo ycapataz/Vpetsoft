@@ -84,13 +84,29 @@
         <br><br><br><br>
 	<main>
         <h1>EDITAR PRODUCTO</h1>
-        <br><br><br><br>
-		<form action="" class="formulario" method="POST">
-            <input type="hidden" name="id" value="<?php $idproducto?>">
+        <br><br><br>
+		<form action="../PHP/editarDatosProducto.php" class="formulario" method="POST">
+            <?php 
+                require_once("../conexion.php");
+
+                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $query = "SELECT * FROM producto WHERE idproducto =".$_GET['Id'];
+                $stmt = $conexion->prepare($query);
+                $stmt->execute();
+                $roww = $stmt->fetch(PDO::FETCH_ASSOC);
+            ?>
+            
+            <div class="formulario__grupo" id="Frecuencia">
+				<label for="Frecuencia" class="formulario__label">Id producto</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="idproducto" id="idproducto" readonly value="<?php echo $roww['idproducto'];?>">
+				</div>
+			</div>
 			<div class="formulario__grupo" id="Frecuencia">
 				<label for="Frecuencia" class="formulario__label">Nombre producto</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="nombre_producto" id="nombre_producto" placeholder="Ingrese el nombre del producto" required value="<?= $row['nomproducto']?>">
+					<input type="text" class="formulario__input" name="nombre_producto" id="nombre_producto" placeholder="Ingrese el nombre del producto" required value="<?php echo $roww['nomproducto'];?>">
 				</div>
 			</div>
 
@@ -98,13 +114,19 @@
 			<div class="formulario__grupo" id="Temperatura">
 				<label for="Temperatura" class="formulario__label">Fecha vencimiento</label>
 				<div class="formulario__grupo-input">
-					<input type="date" class="formulario__input" name="fecha_ven" id="fecha_ven" required value="<?= $row['fecvenproducto']?>">
+					<input type="date" class="formulario__input" name="fecha_ven" id="fecha_ven" required value="<?php echo $roww['fecvenproducto'];?>">
 				</div>
 			</div>
 			<div class="formulario__grupo" id="Auscultacion">
 				<label for="Auscultacion" class="formulario__label">Cantidad</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" required pattern="[0-9]" value="<?= $row['cantproducto']?>">
+					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" required pattern="[0-9]" value="<?php echo $roww['cantproducto'];?>">
+				</div>
+			</div>
+            <div class="formulario__grupo" id="examen">
+				<label for="examen" class="formulario__label">Lote producto</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="lote" id="lote" placeholder="Ingrese el lote del producto" required value="<?php echo $roww['loteproducto'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo">
@@ -114,8 +136,13 @@
             <?php
             require("../conexion.php");
 
+            $sql1 = "SELECT * FROM proveedor WHERE idproveedor=".$roww['idproveedor'];
+            $resultado1 = $conexion->prepare($sql1);
+            $resultado1->execute();
+            $row1 = $resultado1->fetch(PDO::FETCH_ASSOC);
+            echo "<option selected value='".$row1['idproveedor']."'>".$row1['nomproveedor']."</option>";
 
-            try {
+         try {
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -133,8 +160,8 @@
                 echo "Error: " . $e->getMessage();
             }
             ?>
-                </select>
-            </div>
+            </select>
+            </div> 
             <div class="formulario__grupo">
                 <label>Categoria</label>
                 <select name="categoria">
@@ -142,6 +169,11 @@
             <?php
             require("../conexion.php");
 
+            $sql2 = "SELECT * FROM categoria WHERE idcategoria=".$roww['idcategoria'];
+            $resultado2 = $conexion->prepare($sql2);
+            $resultado2->execute();
+            $row2 = $resultado2->fetch(PDO::FETCH_ASSOC);
+            echo "<option selected value='".$row2['idcategoria']."'>".$row2['nomcategoria']."</option>";
 
             try {
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -170,6 +202,11 @@
             <?php
             require("../conexion.php");
 
+            $sql3 = "SELECT * FROM estado WHERE idestado=".$roww['idestado'];
+            $resultado3 = $conexion->prepare($sql3);
+            $resultado3->execute();
+            $row3 = $resultado3->fetch(PDO::FETCH_ASSOC);
+            echo "<option selected value='".$row3['idestado']."'>".$row3['nomestado']."</option>";
 
             try {
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -189,18 +226,13 @@
                 echo "Error: " . $e->getMessage();
             }
             ?>
-                </select>
+            </select>
             </div>
-            <div class="formulario__grupo" id="examen">
-				<label for="examen" class="formulario__label">Lote producto</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="lote" id="lote" placeholder="Ingrese el lote del producto" required>
-				</div>
-			</div>
+
             
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
             <br><br>
-				<button type="submit" class="formulario__btn">Guardar producto</button>
+				<button type="submit" class="formulario__btn">Actualizar producto</button>
 			</div>
 		</form>
 	</main>

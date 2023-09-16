@@ -106,6 +106,12 @@
 					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" required pattern="[0-9]">
 				</div>
 			</div>
+            <div class="formulario__grupo" id="examen">
+				<label for="examen" class="formulario__label">Lote producto</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="lote" id="lote" placeholder="Ingrese el lote del producto" required>
+				</div>
+			</div>
             <div class="formulario__grupo">
                 <label>Proveedor</label>
                 <select name="proveedor">
@@ -190,12 +196,6 @@
             ?>
                 </select>
             </div>
-            <div class="formulario__grupo" id="examen">
-				<label for="examen" class="formulario__label">Lote producto</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="lote" id="lote" placeholder="Ingrese el lote del producto" required>
-				</div>
-			</div>
             
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
             <br><br>

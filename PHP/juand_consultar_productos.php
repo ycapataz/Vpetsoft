@@ -117,30 +117,31 @@
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $idproducto = $row['idproducto'];
-                    $nomproducto = $row['nomproducto'];
-                    $fecvenproducto = $row['fecvenproducto'];
-                    $cantproducto = $row['cantproducto'];
-                    $nomestado = $row['nomestado'];
-                    $loteproducto = $row['loteproducto'];
-                    $nomcategoria = $row['nomcategoria'];
-                    $nomproveedor = $row['nomproveedor'];
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$idproducto</td>";
-                    echo "<td>$nomproducto</td>";
-                    echo "<td>$fecvenproducto</td>";
-                    echo "<td>$cantproducto</td>";
-                    echo "<td>$nomestado</td>";
-                    echo "<td>$loteproducto</td>";
-                    echo "<td>$nomcategoria</td>";
-                    echo "<td>$nomproveedor</td>";
-                    echo "<td style='text-align: center;'>
-                    <button style='width: 59%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href='../PHP/editarProducto.php?id=$idproducto'><i class='fas fa-edit' style='color: white;'></i></a></button>
-                    <button style='width: 59%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
-                </td>";
-                    echo "</tr>";
+                while ($resultado = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $idproducto = $resultado['idproducto'];
+                    $nomproducto = $resultado['nomproducto'];
+                    $fecvenproducto = $resultado['fecvenproducto'];
+                    $cantproducto = $resultado['cantproducto'];
+                    $nomestado = $resultado['nomestado'];
+                    $loteproducto = $resultado['loteproducto'];
+                    $nomcategoria = $resultado['nomcategoria'];
+                    $nomproveedor = $resultado['nomproveedor'];
+                    ?>
+                    <tr>
+                        <td><?php echo $idproducto?></td>
+                        <td><?php echo $nomproducto?></td>
+                        <td><?php echo $fecvenproducto?></td>
+                        <td><?php echo $cantproducto?></td>
+                        <td><?php echo $nomestado?></td>
+                        <td><?php echo $loteproducto?></td>
+                        <td><?php echo $nomcategoria?></td>
+                        <td><?php echo $nomproveedor?></td>
+                        <td>
+                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/editarProducto.php?Id=<?php echo $resultado['idproducto']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                        </td>
+                    </tr>
+                    <?php
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();

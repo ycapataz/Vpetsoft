@@ -1,9 +1,10 @@
 <?php
 require_once("../conexion.php");
-require_once("../PHP/juand_crear_producto.php");
+
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recopila los datos del formulario
+    $idproducto = $_POST['idproducto'];
     $nomproducto = $_POST["nombre_producto"];
     $fechaven = $_POST["fecha_ven"];
     $cant = $_POST["cant"];
@@ -11,18 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idcategoria = $_POST["categoria"];
     $idestado = $_POST["estado"];
     $lote = $_POST["lote"];
-
-
-
-    // Realiza la inserción en la base de datos utilizando PDO
-    try {
+    try{
+        // Realiza la inserción en la base de datos utilizando PDO
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-        $query = "INSERT INTO producto (idproducto, nomproducto, fecvenproducto, cantproducto, loteproducto, idproveedor, idcategoria, idestado) VALUES (null, :nomproducto, :fechaven, :cant, :lote, :idproveedor, :idcategoria, :idestado);";
-        $stmt = $conexion->prepare($query);
+        $sql = "UPDATE producto SET nomproducto= :nomproducto, fecvenproducto= :fechaven,cantproducto=:cant,loteproducto=:lote,idproveedor=:idproveedor,idcategoria=:idcategoria,idestado=:idestado WHERE idproducto=:idproducto";
+        $stmt = $conexion->prepare($sql);
 
         // Bind de los valores
+        $stmt->bindParam(":idproducto", $idproducto, PDO::PARAM_INT);
         $stmt->bindParam(":nomproducto", $nomproducto, PDO::PARAM_STR);
         $stmt->bindParam(":fechaven", $fechaven, PDO::PARAM_STR);
         $stmt->bindParam(":cant", $cant, PDO::PARAM_INT);
@@ -30,15 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(":idcategoria", $idcategoria, PDO::PARAM_INT);
         $stmt->bindParam(":idestado", $idestado, PDO::PARAM_INT);
         $stmt->bindParam(":lote", $lote, PDO::PARAM_INT);
-
-
         // Ejecuta la consulta
         $stmt->execute();
-       if ($stmt === TRUE){
-            echo '<script> alert("Producto creado exitosamente"); </script>';
-            header("location:../PHP/juand_consultar_productos.php");
-        }
-
+        header("location:../PHP/juand_consultar_productos.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -47,3 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "El formulario no se ha enviado correctamente.";
 }
 ?>
+
