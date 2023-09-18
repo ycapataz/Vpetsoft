@@ -107,6 +107,7 @@ if (!isset($nombre)){
                         <th>Empleado</th>
                         <th>Mascota</th>
                         <th>Fecha</th>
+                        <th>Observacion</th>
                         <th>Documento</th>
                     </tr>
                 </thead>
@@ -117,7 +118,7 @@ if (!isset($nombre)){
                     try {
                         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $query = "SELECT registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado, nommascota, fechregistroclinico FROM registroclinico JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico JOIN empleado ON empleado.idempleado = registroclinico.idempleado JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota ORDER BY registroclinico.idregistroclinico;";
+                        $query = "SELECT registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado, nommascota, fechregistroclinico, mascota_has_registroclinico.observaciones FROM registroclinico JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico JOIN empleado ON empleado.idempleado = registroclinico.idempleado JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota ORDER BY registroclinico.idregistroclinico;";
                         $stmt = $conexion->prepare($query);
                         $stmt->execute();
 
@@ -128,6 +129,7 @@ if (!isset($nombre)){
                             $nomempleado = $row['nomempleado'];
                             $nommascota = $row['nommascota'];
                             $fechregistroclinico = $row['fechregistroclinico'];
+                            $Observacion = $row['observaciones'];
                             // Imprimir los valores en la tabla
                             echo "<tr>";
                             echo "<td>$idregistroclinico</td>";
@@ -136,6 +138,7 @@ if (!isset($nombre)){
                             echo "<td>$nomempleado</td>";
                             echo "<td>$nommascota</td>";
                             echo "<td>$fechregistroclinico</td>";
+                            echo "<td>$Observacion</td>";
                             echo "<td><img class='icono' src='../Imegenes/accept.png'></td>";
                             echo "</tr>";
                             
