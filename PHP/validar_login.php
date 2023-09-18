@@ -6,35 +6,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    // Consulta preparada para evitar SQL injection
     $stmt = $conexion->prepare("SELECT * FROM empleado WHERE corempleado = :email AND password = :password");
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
     $stmt->execute();
 
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        // Si las credenciales son correctas
-
-        // Obtener el nombre del empleado
+        $_SESSION['id_empleado'] = $row['idempleado'];
         $_SESSION['email'] = $row['corempleado'];
-        $stmt_empleado = $conexion->prepare("SELECT nomempleado, idcargo FROM empleado WHERE corempleado = :email");
-        $stmt_empleado->bindParam(':email', $email);
-        $stmt_empleado->execute();
-        $row_empleado = $stmt_empleado->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['nombre'] = $row_empleado['nomempleado']; // Guardar el nombre del empleado en una variable
+        $_SESSION['nombre'] = $row['nomempleado'];
+        $_SESSION['apellido'] = $row['apeempleado'];
+        $_SESSION['documento'] = $row['cedempleado'];
+        $_SESSION['edad'] = $row['edadempleado'];
+        $_SESSION['direccion'] = $row['dirempleado'];
+        $_SESSION['telefono'] = $row['telempleado'];
+        $_SESSION['fecha'] = $row['fecnacempleado'];
+        $_SESSION['idcargo'] = $row['idcargo'];
+        
 
-        // Validar el rol del empleado basado en el idcargo
-        $idcargo = $row_empleado['idcargo'];
-
-        // Consultar el cargo
+        // Obtener el nombre del cargo
         $stmt_cargo = $conexion->prepare("SELECT nomcargo FROM cargo WHERE idcargo = :idcargo");
-        $stmt_cargo->bindParam(':idcargo', $idcargo);
+        $stmt_cargo->bindParam(':idcargo', $row['idcargo']);
         $stmt_cargo->execute();
         $row_cargo = $stmt_cargo->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['nomcargo'] = $row_cargo['nomcargo'];
 
-        $_SESSION['nomcargo'] = $row_cargo['nomcargo']; // Guardar el rol en una variable de sesión
-        // Redireccionar según el rol
-        switch($idcargo) {
+        // Obtener el nombre de la especialidad
+        $stmt_especialidad = $conexion->prepare("SELECT nomespecialidad FROM especialidad WHERE idespecialidad = :idespecialidad");
+        $stmt_especialidad->bindParam(':idespecialidad', $row['idespecialidad']);
+        $stmt_especialidad->execute();
+        $row_especialidad = $stmt_especialidad->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['nomespecialidad'] = $row_especialidad['nomespecialidad'];
+
+        // Obtener el nombre de la EPS
+        $stmt_eps = $conexion->prepare("SELECT nomeps FROM eps WHERE ideps = :ideps");
+        $stmt_eps->bindParam(':ideps', $row['ideps']);
+        $stmt_eps->execute();
+        $row_eps = $stmt_eps->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['nomeps'] = $row_eps['nomeps'];
+
+        switch($row['idcargo']) {
             case 1:
                 header("Location: ../PHP/ydcapa_perfil_veterinario.php");
                 break;
@@ -53,7 +64,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         window.location.href = "../HTML/iniciosesion.html";
         </script>';
     }
-    //echo "<script>alert('".$_SESSION['nomcargo']."');</script>";
 }
-
 ?>
