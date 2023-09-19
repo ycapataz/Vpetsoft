@@ -130,17 +130,22 @@ if (!isset($nombre)){
                             $nommascota = $row['nommascota'];
                             $fechregistroclinico = $row['fechregistroclinico'];
                             $Observacion = $row['observaciones'];
-                            // Imprimir los valores en la tabla
-                            echo "<tr>";
-                            echo "<td>$idregistroclinico</td>";
-                            echo "<td>$frecardiaca</td>";
-                            echo "<td>$temperatura</td>";
-                            echo "<td>$nomempleado</td>";
-                            echo "<td>$nommascota</td>";
-                            echo "<td>$fechregistroclinico</td>";
-                            echo "<td>$Observacion</td>";
-                            echo "<td><img class='icono' src='../Imegenes/accept.png'></td>";
-                            echo "</tr>";
+
+                            ?>
+                            <tr>
+                        <td><?php echo $idregistroclinico?></td>
+                        <td><?php echo $frecardiaca?></td>
+                        <td><?php echo $temperatura?></td>
+                        <td><?php echo $nomempleado?></td>
+                        <td><?php echo $nommascota?></td>
+                        <td><?php echo $fechregistroclinico?></td>
+                        <td><?php echo $Observacion?></td>
+                        <td>
+                        <button id="btn-abrir-popup" style='width: 78%; background-color: rgba(29, 113, 184, 0); text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/reporte_historia_clinica.php"><i class='fas fa-download' style='color: #56208c;'></i></a></button>
+
+                        </td>
+                    </tr>
+                    <?php
                             
                         }
                     } catch (PDOException $e) {
