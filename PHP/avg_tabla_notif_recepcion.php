@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla_Ingresos</title>
+    <title>Notifi_recepcion</title>
     <link rel="stylesheet" href="../CSS/avg_encabezado.css">
-    <link rel="stylesheet" href="../CSS/avg_Tabla_ingresos.css">
+    <link rel="stylesheet" href="../CSS/avg_Tablas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="shortcut icon" href="../Imegenes/logo1.png">
 </head>
 <body>
-    <nav id="tabla_ingresos">
+    <nav id="nav_notificaciones">
         <ul>
             <li>
                 <a href="#" class="logo">
@@ -50,7 +50,7 @@
             <li><a href="../PHP/avg_tabla_clientes.php">
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Consulta Propietario</span> 
-            </a></li>    
+            </a></li>
            <!-- <li><a href="#">
                 <i class="fas fa-question-circle"></i>
                 <span class="nav-item">Ayuda</span> 
@@ -76,18 +76,18 @@
 
             <div class="user-wrapper">
                 <img src="../Imegenes/recepcionista_perfil.jpg" width="40px"height="40px" alt="">
-                <div>
-                    <h4>CATALINA RUIZ MENDEZ</h4>
-                    <small>RECEPCIONISTA</small>
+                    <div>
+                        <h4>CATALINA RUIZ MENDEZ</h4>
+                        <small>RECEPCIONISTA</small>
+                    </div>
                 </div>
-            </div>
-        </header>
-    </div>
+            </header>
+        </div>
     <main class="table">
         <section class="table__header">
-            <h1>Mascotas</h1>
+            <h1>Notificaciones</h1>
             <div class="input-group">
-                <input type="search" id="busqueda" placeholder="Buscar Nombre Mascota">
+                <input type="search" id="busqueda" placeholder="Buscar ">
                 <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
@@ -95,59 +95,98 @@
             <table id="miTabla">
                 <thead>
                     <tr>
-                        <th>Nombre Mascota</th>
-                        <th>Color Mascota</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Raza</th>
-                        <th>Especie</th>
-                        <th>Numero microchip</th>
-                        <th>Genero</th>
-                        <th>Nombre Propietario</th>
-                        
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-            require("../conexion.php");
-
-            try {
-                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                $query = "SELECT nommascota, colmascota, fecnacmascota, nomraza, nomespecie, num_microchipmascota, nomgenmascota, nomcliente FROM mascota JOIN genmascota ON mascota.idgenmascota = genmascota.idgenmascota JOIN raza ON mascota.idraza=raza.idraza JOIN especie ON mascota.idespecie=especie.idespecie JOIN cliente ON mascota.idcliente=cliente.idcliente;";
-                $stmt = $conexion->prepare($query);
-                $stmt->execute();
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $nommascota = $row['nommascota'];
-                    $colmascota = $row['colmascota'];
-                    $fechanac = $row['fecnacmascota'];
-                    $nomraza = $row['nomraza'];
-                    $nomespecie = $row['nomespecie'];
-                    $microchip = $row['num_microchipmascota'];
-                    $nomgenmasco = $row['nomgenmascota'];
-                    $nomcliente = $row['nomcliente'];
-                    
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$nommascota</td>";
-                    echo "<td>$colmascota</td>";
-                    echo "<td>$fechanac</td>";
-                    echo "<td>$nomraza</td>";
-                    echo "<td>$nomespecie</td>";
-                    echo "<td>$microchip</td>";
-                    echo "<td>$nomgenmasco</td>";
-                    echo "<td>$nomcliente</td>";
-                    echo "</tr>";
-                }
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-            ?>
+                    <tr>
+                        <td>Tienes un mensaje de Paola Martelo</td>
+                        <td>23-06-13</td>
+                        <td>3:05 p.m</td>
+                        <td>
+                            <p class="status pendiente">Pendiente</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Adriana Lima</td>
+                        <td>23-06-13</td>
+                        <td>2:58 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mesaje de Paola Martelo</td>
+                        <td>23-06-13</td>
+                        <td>2:25 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Adriana Lima</td>
+                        <td>23-06-13</td>
+                        <td>2:23 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Paola Martelo</td>
+                        <td>23-06-13</td>
+                        <td>2:05 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Adriana Lima</td>
+                        <td>23-06-13</td>
+                        <td>1:58 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Leonardo Reyes</td>
+                        <td>23-06-13</td>
+                        <td>1:55 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Samuel Burbano</td>
+                        <td>23-06-13</td>
+                        <td>1:54 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Johanna Fuentes</td>
+                        <td>23-06-13</td>
+                        <td>1:50 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tienes un mensaje de Nuria Sotelo</td>
+                        <td>23-06-13</td>
+                        <td>1:45 p.m</td>
+                        <td>
+                            <p class="status delivered">Recibido</p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
-    <br><br><br><br>
+
     <script>
         document.getElementById('busqueda').addEventListener('input', function() {
             let filtro = this.value.toLowerCase();

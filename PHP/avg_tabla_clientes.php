@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla_Ingresos</title>
+    <title>Tabla_Propietarios</title>
     <link rel="stylesheet" href="../CSS/avg_encabezado.css">
     <link rel="stylesheet" href="../CSS/avg_Tabla_ingresos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -85,9 +85,9 @@
     </div>
     <main class="table">
         <section class="table__header">
-            <h1>Mascotas</h1>
+            <h1>Consulta Propietario</h1>
             <div class="input-group">
-                <input type="search" id="busqueda" placeholder="Buscar Nombre Mascota">
+                <input type="search" id="busqueda" placeholder="Buscar Propietario">
                 <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
@@ -95,15 +95,13 @@
             <table id="miTabla">
                 <thead>
                     <tr>
-                        <th>Nombre Mascota</th>
-                        <th>Color Mascota</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Raza</th>
-                        <th>Especie</th>
-                        <th>Numero microchip</th>
-                        <th>Genero</th>
-                        <th>Nombre Propietario</th>
-                        
+                        <th>Nombre </th>
+                        <th>Apellido </th>
+                        <th>Cedula</th>
+                        <th>Ciudad</th>
+                        <th>Telefono</th>
+                        <th>Mail</th>
+                        <th>Direccion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,30 +111,28 @@
             try {
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $query = "SELECT nommascota, colmascota, fecnacmascota, nomraza, nomespecie, num_microchipmascota, nomgenmascota, nomcliente FROM mascota JOIN genmascota ON mascota.idgenmascota = genmascota.idgenmascota JOIN raza ON mascota.idraza=raza.idraza JOIN especie ON mascota.idespecie=especie.idespecie JOIN cliente ON mascota.idcliente=cliente.idcliente;";
+                $query = "SELECT nomcliente, apecliente, ceducliente, nomciudad, telcliente, corcliente, dircliente FROM cliente JOIN ciudades ON cliente.idciudad = ciudades.idciudad;";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $nommascota = $row['nommascota'];
-                    $colmascota = $row['colmascota'];
-                    $fechanac = $row['fecnacmascota'];
-                    $nomraza = $row['nomraza'];
-                    $nomespecie = $row['nomespecie'];
-                    $microchip = $row['num_microchipmascota'];
-                    $nomgenmasco = $row['nomgenmascota'];
                     $nomcliente = $row['nomcliente'];
+                    $apecliente = $row['apecliente'];
+                    $ceducliente = $row['ceducliente'];
+                    $nomciudad = $row['nomciudad'];
+                    $telcliente = $row['telcliente'];
+                    $corcliente = $row['corcliente'];
+                    $dircliente = $row['dircliente'];
                     
                     // Imprimir los valores en la tabla
                     echo "<tr>";
-                    echo "<td>$nommascota</td>";
-                    echo "<td>$colmascota</td>";
-                    echo "<td>$fechanac</td>";
-                    echo "<td>$nomraza</td>";
-                    echo "<td>$nomespecie</td>";
-                    echo "<td>$microchip</td>";
-                    echo "<td>$nomgenmasco</td>";
                     echo "<td>$nomcliente</td>";
+                    echo "<td>$apecliente</td>";
+                    echo "<td>$ceducliente</td>";
+                    echo "<td>$nomciudad</td>";
+                    echo "<td>$telcliente</td>";
+                    echo "<td>$corcliente</td>";
+                    echo "<td>$dircliente</td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {
@@ -148,6 +144,7 @@
         </section>
     </main>
     <br><br><br><br>
+
     <script>
         document.getElementById('busqueda').addEventListener('input', function() {
             let filtro = this.value.toLowerCase();
