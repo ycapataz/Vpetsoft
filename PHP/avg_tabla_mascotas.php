@@ -19,30 +19,38 @@
                     <span class="nav-item">Citas e Ingresos</span>
                 </a>
             </li>
-            <li><a href="../HTML/avg_tabla_ingresos.html">
+            <li><a href="../PHP/avg_tabla_ingresos.php">
                 <i class="fas fa-home"></i>
                 <span class="nav-item">Inicio</span>
             </a></li>
-            <li><a href="../HTML/avg_Formulario_cliente.html">
+            <li><a href="../PHP/avg_Formulario_cliente.php">
                 <i class="fas fa-wallet"></i>
                 <span class="nav-item">Propietario / Mascota</span>
             </a></li>
-            <li><a href="../HTML/avg_Formulario_citas.html">
+            <li><a href="../PHP/avg_Formulario_citas.php">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Citas</span>
             </a></li>
-            <li><a href="../HTML/avg_Formulario_empleados.html">
+            <li><a href="../PHP/avg_Formulario_empleados.php">
                 <i class="fas fa-cog"></i>
                 <span class="nav-item">Equipo de trabajo</span>
             </a></li>
-            <li><a href="../HTML/avg_Formulario_perfil_recep.html">
+            <li><a href="../PHP/avg_Formulario_perfil_recep.php">
                 <i class="fas fa-user"></i>
                 <span class="nav-item">Perfil</span>
             </a></li>
-            <li><a href="../HTML/avg_tabla_notif_recepcion.html">
+            <li><a href="../PHP/avg_tabla_notif_recepcion.php">
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Notificaciones</span>
+            </a></li>          
+                <li><a href="../PHP/avg_tabla_mascotas.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Consulta Mascota</span> 
             </a></li>
+            <li><a href="../PHP/avg_tabla_clientes.php">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-item">Consulta Propietario</span> 
+            </a></li>    
            <!-- <li><a href="#">
                 <i class="fas fa-question-circle"></i>
                 <span class="nav-item">Ayuda</span> 
@@ -77,14 +85,14 @@
     </div>
     <main class="table">
         <section class="table__header">
-            <h1>Ingresos</h1>
+            <h1>Mascotas</h1>
             <div class="input-group">
-                <input type="search" placeholder="Buscar ">
+                <input type="search" id="busqueda" placeholder="Buscar Nombre Mascota">
                 <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
         <section class="table__body">
-            <table>
+            <table id="miTabla">
                 <thead>
                     <tr>
                         <th>Nombre Mascota</th>
@@ -95,6 +103,7 @@
                         <th>Numero microchip</th>
                         <th>Genero</th>
                         <th>Nombre Propietario</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -139,5 +148,18 @@
         </section>
     </main>
     <br><br><br><br>
+    <script>
+        document.getElementById('busqueda').addEventListener('input', function() {
+            let filtro = this.value.toLowerCase();
+            let filas = document.querySelectorAll('#miTabla tbody tr');
+
+            console.log(filas);
+
+            filas.forEach(function(fila) {
+                let textoFila = fila.textContent.toLowerCase();
+                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
