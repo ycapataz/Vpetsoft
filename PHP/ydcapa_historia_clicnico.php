@@ -108,6 +108,7 @@ if (!isset($nombre)){
                         <th>Mascota</th>
                         <th>Fecha</th>
                         <th>Observacion</th>
+                        <th>Acciones</th>
                         <th>Documento</th>
                     </tr>
                 </thead>
@@ -141,8 +142,11 @@ if (!isset($nombre)){
                         <td><?php echo $fechregistroclinico?></td>
                         <td><?php echo $Observacion?></td>
                         <td>
+                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/ydcapa_editar_registroclinico.php?Id=<?php echo $row['idregistroclinico']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProducto.php?Id=<?php echo $resultado['idproducto']?>"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                        </td>
+                        <td>
                         <button id="btn-abrir-popup" style='width: 78%; background-color: rgba(29, 113, 184, 0); text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/reporte_historia_clinica.php"><i class='fas fa-download' style='color: #56208c;'></i></a></button>
-
                         </td>
                     </tr>
                     <?php
