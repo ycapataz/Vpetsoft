@@ -87,12 +87,12 @@
         <section class="table__header">
             <h1>Proveedores</h1>
             <div class="input-group">
-                <input type="search" placeholder="Buscar proveedor">
+                <input type="search" id="busqueda" placeholder="Buscar proveedor">
                 <img src="../Imegenes/search-icon.png" alt="">
             </div>
         </section>
         <section class="table__body">
-            <table>
+            <table id="miTabla">
                 <thead>
                     <tr>
                         <th>Id proveedor</th>
@@ -150,5 +150,18 @@
             </table>
         </section>
     </main>
+    <script>
+        document.getElementById('busqueda').addEventListener('input', function() {
+            let filtro = this.value.toLowerCase();
+            let filas = document.querySelectorAll('#miTabla tbody tr');
+
+            console.log(filas);
+
+            filas.forEach(function(fila) {
+                let textoFila = fila.textContent.toLowerCase();
+                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
