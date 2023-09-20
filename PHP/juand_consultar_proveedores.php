@@ -1,3 +1,13 @@
+<?php
+session_start();
+include '../conexion.php';
+
+$nombre = $_SESSION['nombre'];
+if (!isset($nombre)){
+    header("location: ../HTML/iniciosesion.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +29,7 @@
                     <span class="nav-item">Inventario</span>
                 </a>
             </li>
-            <li><a href="../HTML/juand_perfil_inventario.html">
+            <li><a href="../PHP/juand_perfil_inventario.php">
                 <i class="fas fa-user"></i>
                 <span class="nav-item">Perfil</span>
             </a></li>
@@ -55,7 +65,7 @@
                 <i class="fas fa-tasks"></i>
                 <span class="nav-item">Salidas en inventario</span> 
             </a></li>
-            <li><a href="../HTML/index.html" class="logout">
+            <li><a href="../PHP/cerrar_sesion.php" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item">Salir</span> 
             </a></li>
@@ -77,7 +87,7 @@
             <div class="user-wrapper">
                 <img src="../Imegenes/almacenista.jpg" width="40px"height="40px" alt="">
                 <div>
-                    <h4>CARLOS ANDRES HERRERA DIAZ</h4>
+                    <h4><?php echo $nombre; ?></h4>
                     <small>ALMACENISTA</small>
                 </div>
             </div>
