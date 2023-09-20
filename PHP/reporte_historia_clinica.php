@@ -36,7 +36,7 @@ $hojaActiva->setCellValue('I1', 'Observaciones');
 // Llenar datos
 $row = 2;
 foreach ($resultados as $registro) {
-    $hojaActiva->getColumnDimension('A')->setWidth(10);//con este comando se le da espacio a las columna cuando descarga el archivo
+    $hojaActiva->getColumnDimension('A')->setWidth(10);
     $hojaActiva->setCellValue('A' . $row, $registro['idregistroclinico']);
     $hojaActiva->getColumnDimension('B')->setWidth(10);
     $hojaActiva->setCellValue('B' . $row, $registro['frecardiaca']);
@@ -60,12 +60,21 @@ foreach ($resultados as $registro) {
 // Habilitar filtros
 $hojaActiva->setAutoFilter('A1:I' . ($row - 1));
 
-// Guardar el archivo
-$writer = new Xlsx($excel);
-$writer->save('registro_clinico.xlsx');
+// Deshabilitamos la salida al archivo para evitar que se guarde en el servidor
+ob_start();
 
-// Descargar el archivo
+// Guardamos el archivo en la salida del buffer de PHP
+$writer = new Xlsx($excel);
+$writer->save('php://output');
+
+// Obtenemos el contenido del buffer
+$excelData = ob_get_clean();
+
+// Enviamos las cabeceras para la descarga
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="registro_clinico.xlsx"');
 header('Cache-Control: max-age=0');
-$writer->save('php://output');
+
+// Enviamos el contenido al navegador
+echo $excelData;
+?>
