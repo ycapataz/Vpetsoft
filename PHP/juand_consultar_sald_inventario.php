@@ -142,6 +142,10 @@
             </table>
         </section>
     </main>
+    <div class="formulario__grupo formulario__grupo-btn-enviar">
+        <br><br><br><br>
+		<button style='color: #fff;' type="submit" ><a href="../PHP/reporte_inventario.php" style='width: 250px,'>Generar reporte</a></button>  
+    </div>
     <script>
         document.getElementById('busqueda').addEventListener('input', function() {
             let filtro = this.value.toLowerCase();
