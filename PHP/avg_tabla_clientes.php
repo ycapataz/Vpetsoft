@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla_Propietarios</title>
+    <title>Consultar Propietarios</title>
     <link rel="stylesheet" href="../CSS/avg_encabezado.css">
     <link rel="stylesheet" href="../CSS/avg_Tabla_ingresos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -95,6 +95,7 @@
             <table id="miTabla">
                 <thead>
                     <tr>
+                        <th>Id </th>
                         <th>Nombre </th>
                         <th>Apellido </th>
                         <th>Cedula</th>
@@ -111,29 +112,36 @@
             try {
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $query = "SELECT nomcliente, apecliente, ceducliente, nomciudad, telcliente, corcliente, dircliente FROM cliente JOIN ciudades ON cliente.idciudad = ciudades.idciudad;";
+                $query = "SELECT idcliente, nomcliente, apecliente, ceducliente, nomciudad, telcliente, corcliente, dircliente FROM cliente JOIN ciudades ON cliente.idciudad = ciudades.idciudad;";
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $nomcliente = $row['nomcliente'];
-                    $apecliente = $row['apecliente'];
-                    $ceducliente = $row['ceducliente'];
-                    $nomciudad = $row['nomciudad'];
-                    $telcliente = $row['telcliente'];
-                    $corcliente = $row['corcliente'];
-                    $dircliente = $row['dircliente'];
-                    
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$nomcliente</td>";
-                    echo "<td>$apecliente</td>";
-                    echo "<td>$ceducliente</td>";
-                    echo "<td>$nomciudad</td>";
-                    echo "<td>$telcliente</td>";
-                    echo "<td>$corcliente</td>";
-                    echo "<td>$dircliente</td>";
-                    echo "</tr>";
+                while ($resultado = $stmt->fetch(PDO::FETCH_ASSOC)) { 
+                    $idcliente = $resultado['idcliente'];
+                    $nomcliente = $resultado['nomcliente'];
+                    $apecliente = $resultado['apecliente'];
+                    $ceducliente = $resultado['ceducliente'];
+                    $nomciudad = $resultado['nomciudad'];
+                    $telcliente = $resultado['telcliente'];
+                    $corcliente = $resultado['corcliente'];
+                    $dircliente = $resultado['dircliente'];
+
+                ?>
+                <tr>
+                    <td><?php echo $idcliente?></td>
+                    <td><?php echo $nomcliente?></td>
+                    <td><?php echo $apecliente?></td>
+                    <td><?php echo $ceducliente?></td>
+                    <td><?php echo $nomciudad?></td>
+                    <td><?php echo $telcliente?></td>
+                    <td><?php echo $corcliente?></td>
+                    <td><?php echo $dircliente?></td>
+                    <td>
+                    <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_editar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                    <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_Eliminar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                    </td>
+                </tr>
+                <?php
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
