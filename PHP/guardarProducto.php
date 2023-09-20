@@ -34,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Ejecuta la consulta
         $stmt->execute();
-       if ($stmt === TRUE){
-            echo '<script> alert("Producto creado exitosamente"); </script>';
-            header("location:../PHP/juand_consultar_productos.php");
-        }
+        echo '<script> 
+        alert("Producto creado exitosamente");
+        window.location.href = "../PHP/juand_consultar_productos.php";
+        </script>';
 
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();

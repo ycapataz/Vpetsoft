@@ -34,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Ejecuta la consulta
         $stmt->execute();
+        echo '<script> 
+        alert("Proveedor creado exitosamente");
+        window.location.href = "../PHP/juand_consultar_proveedores.php";
+        </script>';
 
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();

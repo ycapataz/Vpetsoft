@@ -30,7 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(":lote", $lote, PDO::PARAM_INT);
         // Ejecuta la consulta
         $stmt->execute();
-        header("location:../PHP/juand_consultar_productos.php");
+        echo '<script> 
+        alert("Producto editado exitosamente");
+        window.location.href = "../PHP/juand_consultar_productos.php";
+        </script>';
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
