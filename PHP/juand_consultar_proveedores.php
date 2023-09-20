@@ -117,30 +117,31 @@
                 $stmt = $conexion->prepare($query);
                 $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $idproveedor = $row['idproveedor'];
-                    $nomproveedor = $row['nomproveedor'];
-                    $repreproveedor = $row['repreproveedor'];
-                    $corproveedor = $row['corproveedor'];
-                    $telproveedor = $row['telproveedor'];
-                    $nomciudad = $row['nomciudad'];
-                    $nomestado = $row['nomestado'];
-                    $nit = $row['nit'];
-                    // Imprimir los valores en la tabla
-                    echo "<tr>";
-                    echo "<td>$idproveedor</td>";
-                    echo "<td>$nomproveedor</td>";
-                    echo "<td>$repreproveedor</td>";
-                    echo "<td>$corproveedor</td>";
-                    echo "<td>$telproveedor</td>";
-                    echo "<td>$nomciudad</td>";
-                    echo "<td>$nomestado</td>";
-                    echo "<td>$nit</td>";
-                    echo "<td style='text-align: center;'>
-                    <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-edit' style='color: white;'></i></a></button>
-                    <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href='../HTML/index.html'><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
-                </td>";
-                    echo "</tr>";
+                while ($resultado = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $idproveedor = $resultado['idproveedor'];
+                    $nomproveedor = $resultado['nomproveedor'];
+                    $repreproveedor = $resultado['repreproveedor'];
+                    $corproveedor = $resultado['corproveedor'];
+                    $telproveedor = $resultado['telproveedor'];
+                    $nomciudad = $resultado['nomciudad'];
+                    $nomestado = $resultado['nomestado'];
+                    $nit = $resultado['nit'];
+                    ?>
+                    <tr>
+                        <td><?php echo $idproveedor?></td>
+                        <td><?php echo $nomproveedor?></td>
+                        <td><?php echo $repreproveedor?></td>
+                        <td><?php echo $corproveedor?></td>
+                        <td><?php echo $telproveedor?></td>
+                        <td><?php echo $nomciudad?></td>
+                        <td><?php echo $nomestado?></td>
+                        <td><?php echo $nit?></td>
+                        <td>
+                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/editarProveedor.php?Id=<?php echo $resultado['idproveedor']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProveedor.php?Id=<?php echo $resultado['idproveedor']?> " onclick="return confirm('¿ESTA SEGURO QUE QUIERE ELIMINAR ESTE PROVEEDOR?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                        </td>
+                    </tr>
+                    <?php
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
