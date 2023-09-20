@@ -106,6 +106,8 @@ if (!isset($nombre)){
                         <th>Temperatura</th>
                         <th>Empleado</th>
                         <th>Mascota</th>
+                        <th>Nombre del cliente</th>
+                        <th>cedula del cliente</th>
                         <th>Fecha</th>
                         <th>Observacion</th>
                         <th>Acciones</th>
@@ -119,7 +121,15 @@ if (!isset($nombre)){
                     try {
                         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $query = "SELECT registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado, nommascota, fechregistroclinico, mascota_has_registroclinico.observaciones FROM registroclinico JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico JOIN empleado ON empleado.idempleado = registroclinico.idempleado JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota ORDER BY registroclinico.idregistroclinico;";
+                        $query = "SELECT 
+                        registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado,
+                        nommascota,nomcliente, ceducliente, fechregistroclinico, mascota_has_registroclinico.observaciones
+                        FROM registroclinico
+                        JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico
+                        JOIN empleado ON empleado.idempleado = registroclinico.idempleado
+                        JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota JOIN cliente ON cliente.idcliente = mascota.idcliente
+                        ORDER BY registroclinico.idregistroclinico;";
+
                         $stmt = $conexion->prepare($query);
                         $stmt->execute();
 
@@ -129,6 +139,8 @@ if (!isset($nombre)){
                             $temperatura = $row['temperatura'];
                             $nomempleado = $row['nomempleado'];
                             $nommascota = $row['nommascota'];
+                            $nomcliente = $row['nomcliente'];
+                            $ceducliente = $row['ceducliente']; 
                             $fechregistroclinico = $row['fechregistroclinico'];
                             $Observacion = $row['observaciones'];
 
@@ -139,11 +151,25 @@ if (!isset($nombre)){
                         <td><?php echo $temperatura?></td>
                         <td><?php echo $nomempleado?></td>
                         <td><?php echo $nommascota?></td>
+                        <td><?php echo $nomcliente?></td>
+                        <td><?php echo $ceducliente?></td>
                         <td><?php echo $fechregistroclinico?></td>
                         <td><?php echo $Observacion?></td>
                         <td>
-                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/ydcapa_editar_registroclinico.php?Id=<?php echo $row['idregistroclinico']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
-                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProducto.php?Id=<?php echo $resultado['idproducto']?>"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/ydcapa_editar_datos_registroclinico.php?Id=<?php echo $row['idregistroclinico']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                        <?php
+                        echo "<button style='width: 95%; cursor: pointer; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;' onclick='confirmarEliminacion(" . $row['idregistroclinico'] . ")'><i class='fas fa-trash-alt' style='color: white;'></i></button><br>";
+                        ?>
+                        <script>
+                        function confirmarEliminacion(idRegistroClinico) {
+                            var confirmacion = confirm("¿Estás seguro de que deseas eliminar este registro clínico?");
+                            if (confirmacion) {
+                                window.location.href = "../PHP/eliminarRegistroClinico.php?Id=" + idRegistroClinico;
+                            }
+                        }
+                        </script>
+                        
+
                         </td>
                         <td>
                         <button id="btn-abrir-popup" style='width: 78%; background-color: rgba(29, 113, 184, 0); text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/reporte_historia_clinica.php"><i class='fas fa-download' style='color: #56208c;'></i></a></button>
