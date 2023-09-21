@@ -170,22 +170,33 @@ if (!isset($nombre)){
 				<h4 class="title">Recuerda siempre poner informacion real.</h4>
 				<form action="../PHP/ydcapa_editar_perfil.php" method="POST">
 					<div class="contenedor-inputs">
-                        <input name="telefono" type="number" placeholder="telefono celular" value="<?php echo $_SESSION['telefono'];?>" >
-                        <input name="correo" type="text" placeholder="Correo electronico" value="<?php echo $_SESSION['email'];?>" onfocus="mostrarMensaje()">
-
+                        <input id="telefono_1" name="telefono" type="number" placeholder="telefono celular" value="<?php echo $_SESSION['telefono'];?>" >
+                        <p id="telefono_error" class="cedula_error">Ingrese un numero de telefono valido</p>
+                        <input id="correo_electronico" name="correo" type="text" placeholder="Correo electronico" value="<?php echo $_SESSION['email'];?>" onfocus="mostrarMensajeCorreo()">
+                        <p id="correo_error" class="formulario_input-error">La dirección de correo electrónico que ingresaste no parece ser válida.</p>
                         <div>
-                        <span id="mensaje" style="color: red; position: relative;"></span>
-                        
+                        <span id="mensaje" style="color: red; position: relative; display: none;">NOTA: Al editar este campo, editará el correo electrónico con el que inicia sesión.</span>
+                        <script src="../JAVASCRIPT/validacion_de_modulo.js"></script>
                         <script>
-                        function mostrarMensaje() {
-                            var mensajeSpan = document.getElementById('mensaje');
-                            mensajeSpan.textContent = "NOTA: Al editar este campo, editará el correo electrónico con el que inicia sesión.";
-                        }
+                            function mostrarMensajeCorreo() {
+                                var correo_electronico = document.getElementById('correo_electronico');
+                                var mensajeSpan = document.getElementById('mensaje');
+
+                                if (correo_electronico) {
+                                    correo_electronico.addEventListener('focus', function() {
+                                        mensajeSpan.style.display = 'inline'; // Mostrar el mensaje cuando el campo obtiene el foco
+                                    });
+
+                                    correo_electronico.addEventListener('blur', function() {
+                                        mensajeSpan.style.display = 'none'; // Ocultar el mensaje cuando el campo pierde el foco
+                                    });
+                                }
+                            }
                         </script>
                         </div>
                         <input name="direccion" type="text" placeholder="Dirección" value="<?php echo $_SESSION['direccion'];?>" >
 					</div>
-					<input type="submit" class="btn-submit" value="editar">
+					<input type="submit" class="btn-submit" id="submit_button" value="Editar" disabled>
 				</form>
 			</div>
 		</div>

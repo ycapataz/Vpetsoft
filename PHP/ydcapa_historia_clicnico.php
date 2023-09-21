@@ -17,6 +17,7 @@ if (!isset($nombre)){
         <link rel="shortcut icon" href="../Imegenes/logo1.png">
         <link rel="stylesheet" href="../CSS/ydcapa_encabezado.css">
         <link rel="stylesheet" href="../CSS/ydcapa_tablas.css">
+        <link rel="stylesheet" href="../CSS/ydcapa_ventana_emergente.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     </head>
@@ -168,11 +169,9 @@ if (!isset($nombre)){
                             }
                         }
                         </script>
-                        
-
                         </td>
                         <td>
-                        <button id="btn-abrir-popup" style='width: 78%; background-color: rgba(29, 113, 184, 0); text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/reporte_historia_clinica.php"><i class='fas fa-download' style='color: #56208c;'></i></a></button>
+                        <button id="btn-abrir-popup" style='width: 78%; background-color: rgba(29, 113, 184, 0); text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px'><i class='fas fa-download' style='color: #56208c;'></i></a></button>
                         </td>
                     </tr>
                     <?php
@@ -188,17 +187,42 @@ if (!isset($nombre)){
     </main>
     <!--filtro de de busqueda de la tabla-->
     <script>
-        document.getElementById('busqueda').addEventListener('input', function() {
+        document.getElementById('busqueda').addEventListener('keyup', function() {
             let filtro = this.value.toLowerCase();
             let filas = document.querySelectorAll('#miTabla tbody tr');
 
-            console.log(filas);
+            let filasMostradas = [];
 
             filas.forEach(function(fila) {
                 let textoFila = fila.textContent.toLowerCase();
-                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+                if (textoFila.includes(filtro)) {
+                    filasMostradas.push(fila);
+                }
+            });
+
+            filas.forEach(function(fila) {
+                fila.style.display = filasMostradas.includes(fila) ? '' : 'none';
             });
         });
     </script>
+        <div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h4 class="title">Parametros de descarga.</h4>
+				<form action="../PHP/reporte_historia_clinica.php" method="POST">
+					<div class="contenedor-inputs">
+                    <label class="titulo_inpuc" for="documento">Documento del Cliente:</label>
+                    <input type="number" id="documento" name="documento_propietario" require><br>
+                    <label class="titulo_inpuc" for="fecha_inicio">Fecha de Inicio:</label>
+                    <input type="date" id="fecha_inicio" name="fecha_inicio"><br>
+                    <label class="titulo_inpuc" for="fecha_fin">Fecha de Fin:</label>
+                    <input type="date" id="fecha_fin" name="fecha_fin" value="<?php echo date('Y-m-d'); ?>" ><br>
+					</div>
+					<input type="submit" value="Descargar" class="btn-submit">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="../JAVASCRIPT/ydcapa_ventana.js"></script>
 </body>
 </html>

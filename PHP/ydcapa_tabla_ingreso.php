@@ -148,15 +148,21 @@ if (!isset($nombre)){
 </main>
     <!--filtro de de busqueda de la tabla-->
     <script>
-        document.getElementById('busqueda').addEventListener('input', function() {
+        document.getElementById('busqueda').addEventListener('keyup', function() {
             let filtro = this.value.toLowerCase();
             let filas = document.querySelectorAll('#miTabla tbody tr');
 
-            console.log(filas);
+            let filasMostradas = [];
 
             filas.forEach(function(fila) {
                 let textoFila = fila.textContent.toLowerCase();
-                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+                if (textoFila.includes(filtro)) {
+                    filasMostradas.push(fila);
+                }
+            });
+
+            filas.forEach(function(fila) {
+                fila.style.display = filasMostradas.includes(fila) ? '' : 'none';
             });
         });
     </script>

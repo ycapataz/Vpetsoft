@@ -54,7 +54,7 @@ body {
 }
 
 .popup .btn-cerrar-popup:hover {
-	color: #000;
+	color: #000000;
 }
 
 .popup h3 {
@@ -73,6 +73,11 @@ body {
 
 .popup form .contenedor-inputs {
 	opacity: 0;
+}
+
+.titulo_inpuc{
+	font-size: 18px;
+	color: #56208c;
 }
 
 .popup form .contenedor-inputs input {

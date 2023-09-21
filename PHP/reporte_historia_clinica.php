@@ -5,18 +5,29 @@ require('../conexion.php');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-$sql = 'SELECT 
+if(isset($_POST['documento_propietario']) && isset($_POST['fecha_inicio']) && isset($_POST['fecha_fin'])) {
+    $documento_propietario = $_POST['documento_propietario'];
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+    
+    $sql = 'SELECT 
         registroclinico.idregistroclinico, frecardiaca, temperatura, nomempleado,
         nommascota,nomcliente, ceducliente, fechregistroclinico, mascota_has_registroclinico.observaciones
         FROM registroclinico
         JOIN mascota_has_registroclinico ON registroclinico.idregistroclinico = mascota_has_registroclinico.idregistroclinico
         JOIN empleado ON empleado.idempleado = registroclinico.idempleado
-        JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota JOIN cliente ON cliente.idcliente = mascota.idcliente
+        JOIN mascota ON mascota_has_registroclinico.idmascota = mascota.idmascota 
+        JOIN cliente ON cliente.idcliente = mascota.idcliente
+        WHERE cliente.ceducliente = :documento
+        AND fechregistroclinico BETWEEN :fecha_inicio AND :fecha_fin
         ORDER BY registroclinico.idregistroclinico;';
-
-$stmt = $conexion->prepare($sql);
-$stmt->execute();
-$resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindParam(':documento', $documento_propietario, PDO::PARAM_STR);
+    $stmt->bindParam(':fecha_inicio', $fecha_inicio, PDO::PARAM_STR);
+    $stmt->bindParam(':fecha_fin', $fecha_fin, PDO::PARAM_STR);
+    $stmt->execute();
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $excel = new Spreadsheet();
 $hojaActiva = $excel->getActiveSheet();
@@ -77,4 +88,5 @@ header('Cache-Control: max-age=0');
 
 // Enviamos el contenido al navegador
 echo $excelData;
+}
 ?>

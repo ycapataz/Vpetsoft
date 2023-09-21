@@ -24,7 +24,7 @@ const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-+#*@.]).{8,}$/;
 const nombreRegex = /^[a-zA-Záéíóú]{3,15}$/;
 const apellidoRegex = /^[a-zA-Záéíóú]{3,15}$/;
 const cedulaRegex = /([0-9]){7,10}/;
-const telefonoRegex = /(350|351|310|311|312|313|314|320|321|322|323|315|316|317|318|319|319|300|301|305)\d{7}/;
+const telefonoRegex = /(350|324|351|310|311|312|313|314|320|321|322|323|315|316|317|318|319|319|300|301|305)\d{7}/;
 const validatePassword2 = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-+#*]).{8,}$/;
 
 
@@ -69,7 +69,7 @@ correo_electronico.addEventListener('input', function() {
 });
 
 telefono.addEventListener('input',function(){
-    if (!validateCedula(telefono.value)) {
+    if (!validateTelefono(telefono.value)) {
         telefonoError.style.display = 'block';
         telefono.style.border = '3px solid red';
     } else {
