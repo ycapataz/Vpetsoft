@@ -2,7 +2,7 @@
 session_start();
 include '../conexion.php';
 
-$nombre = $_SESSION['nombre'] ;
+$nombre = $_SESSION['nombre'];
 if (!isset($nombre)){
     header("location: ../HTML/iniciosesion.html");
 }
@@ -11,13 +11,14 @@ if (!isset($nombre)){
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Form Recepcionista</title>
+        <title>Perfil Recepcionista</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../Imegenes/logo1.png">
         <link rel="stylesheet" href="../CSS/avg_encabezado.css">
         <link rel="stylesheet" href="../CSS/avg_Formulario_empleados.css">
+        <link rel="stylesheet" href="../CSS/ydcapa_ventana_emergente.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     </head>
 <body>
@@ -65,7 +66,7 @@ if (!isset($nombre)){
                 <i class="fas fa-question-circle"></i>
                 <span class="nav-item">Ayuda</span> 
             </a></li>-->
-            <li><a href="../HTML/index.html" class="logout">
+            <li><a href="../PHP/cerrar_sesion.php" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item">Salir</span> 
             </a></li>
@@ -87,7 +88,7 @@ if (!isset($nombre)){
             <div class="user-wrapper">
                 <img src="../Imegenes/recepcionista_perfil.jpg" width="40px"height="40px" alt="">
                 <div>
-                    <h4>CATALINA RUIZ MENDEZ</h4>
+                    <h4><?php echo $nombre; ?></h4>
                     <small>RECEPCIONISTA</small>
                 </div>
             </div>
@@ -95,7 +96,7 @@ if (!isset($nombre)){
     </div>
     <br><br><br><br>
 	<main>
-        <h1>CATALINA RUIZ MENDEZ</h1>
+        <h1><?php echo $_SESSION['nombre']; ?>
         <div class="img_usuaro">
             <img src="../Imegenes/recepcionista_perfil.jpg">
         </div>
@@ -105,69 +106,96 @@ if (!isset($nombre)){
             <div class="formulario__grupo" id="Nombre">
 				<label for="Nombre" class="formulario__label">Nombres</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Nombre" id="Nombre" placeholder="Catalina" readonly  value >
+					<input type="text" class="formulario__input" name="Nombre" id="Nombre" placeholder="Catalina" readonly  value="<?php echo $_SESSION['nombre'];?>" >
 				</div>
 			</div>
             <div class="formulario__grupo" id="Apellidos">
 				<label for="Apellidos" class="formulario__label">Apellidos</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Apellidos" id="Apellidos" placeholder="Ruiz Mendez" readonly  value>
+					<input type="text" class="formulario__input" name="Apellidos" id="Apellidos" placeholder="Ruiz Mendez" readonly  value="<?php echo $_SESSION['apellido'];?>">
 				</div>
 			</div>
             <!-- Grupo: Cedula -->
 			<div class="formulario__grupo" id="Cedula">
 				<label for="Cedula" class="formulario__label">Numero de Cedula</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="Cedula" id="Cedula" step="1" min="10000000" max="1999999999"placeholder="1014568987" readonly  value>
+					<input type="number" class="formulario__input" name="Cedula" id="Cedula" step="1" min="10000000" max="1999999999"placeholder="1014568987" readonly  value="<?php echo $_SESSION['documento'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Fecha Nacimiento">
 				<label for="Fecha Nacimiento" class="formulario__label">Fecha Nacimiento</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Fecha Nacimiento" id="Fecha Nacimiento" step="1" min="1" max="3" placeholder="01/08/2002" readonly  value>
+					<input type="text" class="formulario__input" name="Fecha Nacimiento" id="Fecha Nacimiento" step="1" min="1" max="3" placeholder="01/08/2002" readonly  value="<?php echo $_SESSION['fecha'];?>">
 				</div>
 			</div>
 			<div class="formulario__grupo" id="Celular">
 				<label for="Celular" class="formulario__label">Numero Celular</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="Celular" id="Celular"min="3002000000" max="3509999999" placeholder="3004556633" readonly  value>
+					<input type="number" class="formulario__input" name="Celular" id="Celular"min="3002000000" max="3509999999" placeholder="3004556633" readonly  value="<?php echo $_SESSION['telefono'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Email">
 				<label for="Email" class="formulario__label">Email</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="Email" id="Email"  placeholder="cruizm@dogsano.com" readonly  value >
+					<input type="email" class="formulario__input" name="Email" id="Email"  placeholder="cruizm@dogsano.com" readonly  value ="<?php echo $_SESSION['direccion'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Direccion">
 				<label for="Direccion" class="formulario__label">Direccion</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Direccion" id="Direccion"  placeholder="Cra 68 # 68d 24 Urb Salomon torre 4 apto 1303" readonly  value>
+					<input type="text" class="formulario__input" name="Direccion" id="Direccion"  placeholder="Cra 68 # 68d 24 Urb Salomon torre 4 apto 1303" readonly  value="<?php echo $_SESSION['direccion'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Especialidad">
 				<label for="Especialidad" class="formulario__label">Especialidad</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Especialidad" id="Especialidad"  placeholder="Auxiliar" readonly  value>
+					<input type="text" class="formulario__input" name="Especialidad" id="Especialidad"  placeholder="Auxiliar" readonly  value="<?php echo $_SESSION['nomespecialidad'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Cargo">
 				<label for="Cargo" class="formulario__label">Especialidad</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Cargo" id="Cargo"  placeholder="Recepcionista" readonly  value>
+					<input type="text" class="formulario__input" name="Cargo" id="Cargo"  placeholder="Recepcionista" readonly  value="<?php echo $_SESSION['nomcargo'];?>">
 				</div>
 			</div>
             <div class="formulario__grupo" id="Eps">
 				<label for="Eps" class="formulario__label">Eps</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="Eps" id="Eps"  placeholder="E.P.S. SANITAS S.A." readonly  value>
+					<input type="text" class="formulario__input" name="Eps" id="Eps"  placeholder="E.P.S. SANITAS S.A." readonly  value="<?php echo $_SESSION['nomeps'];?>">
 				</div>
                 <br><br>
 			</div>
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Editar</button>
+                <button id="btn-abrir-popup" type="button" class="formulario__btn">Editar</button>
 			</div>
 		</form>
 	</main>
+    <div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h4 class="title">Diligencia los campos</h4>
+				<form action="../PHP/avg_Formulario_perfil_recep_Editar.php" method="POST">
+					<div class="contenedor-inputs">
+                        <input name="telefono" type="number" placeholder="telefono celular" value="<?php echo $_SESSION['telefono'];?>" >
+                        <input name="correo" type="text" placeholder="Correo electronico" value="<?php echo $_SESSION['email'];?>" onfocus="mostrarMensaje()">
+
+                        <div>
+                        <span id="mensaje" style="color: red; position: relative;"></span>
+                        
+                        <script>
+                        function mostrarMensaje() {
+                            var mensajeSpan = document.getElementById('mensaje');
+                            mensajeSpan.textContent = "NOTA: Al editar este campo, editará el correo electrónico con el que inicia sesión.";
+                        }
+                        </script>
+                        </div>
+                        <input name="direccion" type="text" placeholder="Dirección" value="<?php echo $_SESSION['direccion'];?>" >
+					</div>
+					<input type="submit" class="btn-submit" value="Actualizar">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="../JAVASCRIPT/ydcapa_ventana.js"></script>
 </body>
 </html>
