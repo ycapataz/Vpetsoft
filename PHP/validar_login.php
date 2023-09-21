@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../PHP/ydcapa_perfil_veterinario.php");
                 break;
             case 2:
-                header("Location: ../HTML/avg_tabla_ingresos.html");
+                header("Location: ../PHP/avg_tabla_ingresos.php");
                 break;
             case 3:
                 header("Location: ../PHP/juand_consultar_sald_inventario.php");
