@@ -32,7 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
         // Ejecuta la consulta
         $stmt->execute();
-        header("location:../PHP/avg_tabla_clientes.php");
+        echo '<script> 
+        alert("Cliente editado exitosamente");
+        window.location.href = "../PHP/avg_tabla_clientes.php";
+        </script>';
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
