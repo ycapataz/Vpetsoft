@@ -54,7 +54,7 @@
                     <i class="fas fa-question-circle"></i>
                     <span class="nav-item">Ayuda</span> 
                 </a></li>-->
-                <li><a href="../HTML/index.html" class="logout">
+                <li><a href="../PHP/cerrar_sesion.php" class="logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-item">Salir</span> 
                 </a></li>
