@@ -120,7 +120,7 @@ if (!isset($nombre)){
 			<div class="formulario__grupo" id="Empleado">
 				<label for="Empleado" class="formulario__label">Telefono</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="telefono" id="telefono" placeholder="Ingrese el telefono del proveedor" required >
+					<input type="number" class="formulario__input" name="telefono" id="telefono" min="3002000000" max="3509999999" placeholder="Ingrese el telefono del proveedor" required >
 				</div>
 			</div>
             <div class="formulario__grupo">

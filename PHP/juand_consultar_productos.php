@@ -147,8 +147,8 @@ if (!isset($nombre)){
                         <td><?php echo $nomcategoria?></td>
                         <td><?php echo $nomproveedor?></td>
                         <td>
-                        <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/editarProducto.php?Id=<?php echo $resultado['idproducto']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
-                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProducto.php?Id=<?php echo $resultado['idproducto']?> " onclick="return confirm('¿ESTA SEGURO QUE QUIERE ELIMINAR ESTE PRODUCTO?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                        <button style='width: 60%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/editarProducto.php?Id=<?php echo $resultado['idproducto']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
+                        <button style='width: 60%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProducto.php?Id=<?php echo $resultado['idproducto']?> " onclick="return confirm('¿ESTA SEGURO QUE QUIERE ELIMINAR ESTE PRODUCTO?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
                         </td>
                     </tr>
                     <?php

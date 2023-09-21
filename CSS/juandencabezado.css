@@ -8,6 +8,11 @@
 	font-family: Arial, Helvetica, sans-serif;
 
 }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 body{
 	background:  #ddd5e5;
 }
@@ -24,6 +29,7 @@ body{
 }
 
 nav{
+	height: 100%;
 	background: #C3F294;;/*fondo bar nav*/
 	width: 90px;/*tamano letras*/
 	overflow: hidden;/*tapa logo*/
@@ -268,6 +274,39 @@ input[type="search"] {
     text-align: center;
     font-size: 22px;
     color: #C4FD96;
+}
+@media (max-width: 20560px) {
+	#nav_notificaciones{
+		height: 160%;
+	}
+
+	#nav_perfil_almacenista{ 
+		height: 120%;
+	}
+	
+	#nav_crear_producto{
+		height: 100%;
+	}
+	
+	#nav_crear_proveedor{
+		height: 100%;
+	}
+	
+	#nav_registro_entrada{
+		height: 100%;
+	}
+	
+	#nav_registro_salida{
+		height: 100%;
+	}
+	#nav_consultar_producto{
+		height: 100%;
+	}
+	
+	#consultar_proveedores{
+		height: 100%;
+	}
+
 }
 
 

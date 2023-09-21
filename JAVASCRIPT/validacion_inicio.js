@@ -29,4 +29,4 @@ function validateEmail(email) {
 }
 function validatePassword(contraseña) {
     return passwordRegex.test(contraseña);
-}
+} 

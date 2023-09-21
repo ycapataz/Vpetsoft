@@ -278,7 +278,7 @@ input[type="search"] {
 
 @media (max-width: 20560px) {
 	#nav_perfil{
-		height: 160%;
+		height: 125%;
 	}
 	
 	#nav_ingreso{

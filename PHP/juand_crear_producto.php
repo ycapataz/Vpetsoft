@@ -113,7 +113,7 @@ if (!isset($nombre)){
 			<div class="formulario__grupo" id="Auscultacion">
 				<label for="Auscultacion" class="formulario__label">Cantidad</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" required pattern="[0-9]">
+					<input type="number" class="formulario__input" name="cant" id="cant" placeholder="1" min="1" required pattern="[0-9]">
 				</div>
 			</div>
             <div class="formulario__grupo" id="examen">
