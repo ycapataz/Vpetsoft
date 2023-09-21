@@ -1,3 +1,13 @@
+<?php
+session_start();
+include '../conexion.php';
+
+$nombre = $_SESSION['nombre'];
+if (!isset($nombre)){
+    header("location: ../HTML/iniciosesion.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +65,7 @@
                 <i class="fas fa-question-circle"></i>
                 <span class="nav-item">Ayuda</span> 
             </a></li>-->
-            <li><a href="../HTML/index.html" class="logout">
+            <li><a href="../PHP/cerrar_sesion.php" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item">Salir</span> 
             </a></li>
@@ -138,7 +148,7 @@
                     <td><?php echo $dircliente?></td>
                     <td>
                     <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_editar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
-                    <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_Eliminar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                    <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_Eliminar.php?Id=<?php echo $resultado['idcliente']?> " onclick="return confirm('¿DESEA ELIMINAR ESTE CLIENTE?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
                     </td>
                 </tr>
                 <?php
