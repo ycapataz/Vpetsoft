@@ -148,8 +148,7 @@ if (!isset($nombre)){
                     <td><?php echo $corcliente?></td>
                     <td><?php echo $dircliente?></td>
                     <td>
-                    <button style='width: 75%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_editar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
-                    <button style='width: 75%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_Eliminar.php?Id=<?php echo $resultado['idcliente']?> " onclick="return confirm('¿DESEA ELIMINAR ESTE CLIENTE?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
+                    <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/avg_tabla_clientes_editar.php?Id=<?php echo $resultado['idcliente']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
                     </td>
                 </tr>
                 <?php

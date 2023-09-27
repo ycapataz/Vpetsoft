@@ -148,7 +148,6 @@ if (!isset($nombre)){
                         <td><?php echo $nit?></td>
                         <td>
                         <button style='width: 95%; background-color: #1d71b8;text-decoration: none;border-radius: 25%;border: #fff;'><a style='width: 2px' href="../PHP/editarProveedor.php?Id=<?php echo $resultado['idproveedor']?>"><i class='fas fa-edit' style='color: white;'></i></a></button>
-                        <button style='width: 95%; background-color: #f72b2b; text-decoration: none; border-radius: 25%; border: #fff;'><a style='width: 2px' href="../PHP/eliminarProveedor.php?Id=<?php echo $resultado['idproveedor']?> " onclick="return confirm('¿ESTA SEGURO QUE QUIERE ELIMINAR ESTE PROVEEDOR?'); false"><i class='fas fa-trash-alt' style='color: white;'></i></a></button><br>
                         </td>
                     </tr>
                     <?php
